@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    tools:context="com.taoxue.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/frag_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_bottom_ll"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:id="@+id/main_bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:text="main_bottom_ll">
+
+
+        <FrameLayout
+            android:id="@+id/home_fral_one"
+            style="@style/HomeTabStyle"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <ImageView
+                    android:id="@+id/ac_main_1"
+                    android:layout_width="@dimen/home_tab_img_size"
+                    android:layout_height="@dimen/home_tab_img_size"
+                    android:src="@mipmap/footer_sy_active" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/home_fral_two"
+            style="@style/HomeTabStyle"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <ImageView
+                    android:id="@+id/ac_main_2"
+                    android:layout_width="@dimen/home_tab_img_size"
+                    android:layout_height="@dimen/home_tab_img_size"
+                    android:src="@drawable/bg_tab_classify" />
+
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            style="@style/HomeTabStyle"
+            android:layout_weight="1"
+            android:visibility="invisible"></FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/home_fral_three"
+            style="@style/HomeTabStyle"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <ImageView
+                    android:id="@+id/ac_main_3"
+                    android:layout_width="@dimen/home_tab_img_size"
+                    android:layout_height="@dimen/home_tab_img_size"
+                    android:src="@drawable/bg_tab_read_plus" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/home_fral_four"
+            style="@style/HomeTabStyle"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+                <ImageView
+                    android:id="@+id/ac_main_4"
+                    android:layout_width="@dimen/home_tab_img_size"
+                    android:layout_height="@dimen/home_tab_img_size"
+                    android:src="@drawable/bg_tab_mine" />
+
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ac_main_bottom_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:background="@mipmap/footer_sm"
+            android:paddingBottom="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="扫码阅读"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

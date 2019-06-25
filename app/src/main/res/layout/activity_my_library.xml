@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_my_library"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.taoxue.ui.view.TopBar
+        style="@style/TopBar"
+
+        app:title="@string/my_libray">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_top_height">
+
+            <TextView
+                android:id="@+id/my_liblay_bind_reader_card_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/size10dp"
+                android:text="@string/bind_reader_card"
+                android:textColor="@drawable/selector_text_color_white_gray"
+                android:textSize="@dimen/content_text" />
+        </RelativeLayout>
+
+    </com.taoxue.ui.view.TopBar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/my_liblay_bind_success_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="40dp"
+                android:lineSpacingExtra="6dp"
+                android:text="@string/my_libray_info1"
+                android:textColor="@color/dark_gray"
+                android:textSize="14sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_liblay_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_my_lib_bg"
+                android:overScrollMode="never"
+                android:scrollbars="none"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/my_liblay_bind_reader_tv"
+            style="@style/TextView_16_wrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="您未绑定读者证，请绑定读者证>"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

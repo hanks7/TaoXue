@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selectable_default_white"
+    android:gravity="left"
+    android:orientation="horizontal"
+    android:padding="9dp">
+
+    <ImageView
+        android:id="@+id/frg_search_result_iv_pic"
+        android:layout_width="160dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/icon_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/frg_search_result_tv_name"
+            style="@style/style_title"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="刻意练习刻意练刻意练习刻意练刻意练习刻意练刻意练习刻意练刻意练习刻意练刻意练习刻意练习刻意练习" />
+
+        <TextView
+            android:id="@+id/frg_search_result_tv_supplier_name"
+            style="@style/style_content"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="乐儿刻意练习刻意练刻意练习刻意练刻意练习刻意练刻意练习刻意练刻意练习刻意练刻意练习刻意练刻意练习刻意练" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

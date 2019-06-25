@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/classification_e_book"
+            style="@style/classification_RadioButton"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/classification_RadioButton"
+                android:src="@mipmap/ic_home_huibend" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/home_fg_read_book"
+                android:textColor="@color/color666" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/classification_video"
+            style="@style/classification_RadioButton"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/classification_RadioButton"
+                android:src="@mipmap/ic_home_sjiangushid" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/talk_story"
+                android:textColor="@color/color666" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/classification_audio"
+            style="@style/classification_RadioButton"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/classification_RadioButton"
+                android:src="@mipmap/ic_home_special" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/special"
+                android:textColor="@color/color666" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/classification_picture"
+            style="@style/classification_RadioButton"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                style="@style/classification_RadioButton"
+                android:src="@mipmap/ic_home_fenleid" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/classification"
+                android:textColor="@color/color666" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

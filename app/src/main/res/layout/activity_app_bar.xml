@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/search_bar_lib_home" />
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        </android.support.v4.view.ViewPager>
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/search_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:elevation="0dp"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/ac_my_rl_my_infor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selectable_default_white"
+                        android:paddingBottom="13dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="13dp">
+
+                        <com.taoxue.ui.view.CircleImageView
+                            android:id="@+id/ac_my_iv_head"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/default_margin_large"
+                            android:layout_marginRight="@dimen/default_margin_large"
+                            app:border_color="@color/cp_gray"
+                            app:border_width="2px"
+                            tools:src="@mipmap/lib_home_iv_head" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@+id/ac_my_iv_head"
+                            android:layout_toRightOf="@+id/ac_my_iv_head"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/ac_sr_home_tv_name"
+                                style="@style/TextView_14_wrap"
+                                android:drawableLeft="@mipmap/lib_home_vi_cai"
+                                tools:text="深圳少年图书馆" />
+
+                            <TextView
+                                android:id="@+id/ac_sr_home_tv_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:ellipsize="end"
+                                android:maxLines="3"
+                                android:textColor="@color/gray"
+                                android:textSize="12sp"
+                                tools:text="读者数:2222" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <View style="@style/dividing_line" />
+
+                </LinearLayout>
+            </android.support.v7.widget.Toolbar>
+
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="#ffffff"
+                tl:tl_divider_color="#1A000000"
+                tl:tl_divider_padding="13dp"
+                tl:tl_divider_width="0dp"
+                tl:tl_indicator_color="@color/colorPrimary"
+                tl:tl_indicator_height="1.5dp"
+                tl:tl_indicator_width_equal_title="true"
+                tl:tl_tab_padding="12dp"
+                tl:tl_tab_space_equal="true"
+                tl:tl_textSelectColor="@color/colorPrimary"
+                tl:tl_textUnselectColor="#66000000"
+                tl:tl_textsize="@dimen/text_size_small"
+                tl:tl_underline_color="#DDDDDD"
+                tl:tl_underline_gravity="BOTTOM"
+                tl:tl_underline_height="1px" />
+
+
+        </android.support.design.widget.AppBarLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selectable_default_white"
+    android:gravity="left"
+    android:orientation="horizontal"
+    android:paddingBottom="5dp"
+    android:paddingLeft="@dimen/default_margin_large"
+    android:paddingRight="@dimen/default_margin_large"
+    android:paddingTop="5dp">
+
+    <ImageView
+        android:id="@+id/frg_search_result_iv_pic"
+        android:layout_width="160dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/icon_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/default_margin">
+
+        <TextView
+            android:id="@+id/frg_search_result_tv_name"
+            style="@style/TextView_14_wrap"
+            android:layout_gravity="left"
+            tools:text="刻意练习" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="供应商:"
+                android:textSize="@dimen/text_home_content" />
+
+            <TextView
+                android:id="@+id/frg_search_result_tv_supplier_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/text_home_content"
+                tools:text="乐儿" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/frg_search_result_tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:ellipsize="end"
+            android:lineSpacingExtra="2dp"
+            android:maxLines="5"
+            android:textSize="@dimen/text_home_content"
+            android:text="水平是逐渐地练出来的，而有效进步的关键在于找到一系列的小任务让受训者按顺序完成" />
+    </LinearLayout>
+
+
+</LinearLayout>

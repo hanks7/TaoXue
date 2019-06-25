@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+<ImageView
+    android:id="@+id/my_liblay_item_image_iv"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_marginLeft="10dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:src="@mipmap/icon_launcher"
+    />
+    <TextView
+        android:id="@+id/my_liblay_name_tv"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        style="@style/TextView_16_wrap"
+        android:text="图书馆名"
+        app:layout_constraintLeft_toRightOf="@+id/my_liblay_item_image_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintRight_toLeftOf="@+id/rl"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:gravity="right|center_vertical"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <ImageView
+            android:id="@+id/my_libray_item_up"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/my_liabray_up"
+            />
+
+        <ImageView
+            android:id="@+id/my_libray_item_down"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@+id/my_libray_item_up"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/my_libray_down"
+         />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

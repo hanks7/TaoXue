@@ -1,0 +1,30 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/f6f6f6"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/f6f6f6"
+        android:orientation="vertical">
+
+
+        <com.taoxue.ui.view.TopBar
+            android:id="@+id/toolbar_title"
+            style="@style/TopBar"
+            app:is_has_back="false"
+            app:title="分类" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/classification_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:clipToPadding="false"
+            android:overScrollMode="ifContentScrolls"
+            android:scrollbars="none" />
+    </LinearLayout>
+</FrameLayout>

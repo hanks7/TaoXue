@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.taoxue.ui.module.yuejia.ResourceDetailActivity">
+    <com.taoxue.ui.view.TopBar
+        android:id="@+id/introduction_topbar"
+        style="@style/TopBar"
+        app:title="资源详情"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+<ScrollView
+    android:layout_width="match_parent"
+   android:layout_height="0dp"
+    android:layout_weight="1"
+    >
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_resource_pic"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/imagedaiti"
+            app:layout_constraintDimensionRatio="1.71:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--app:srcCompat="@color/default_background"-->
+        <ImageView
+            android:id="@+id/iv_small"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_resource_pic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_resource_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="18sp"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_resource_pic"
+
+            tools:layout_editor_absoluteX="8dp" />
+           <TextView
+               android:id="@+id/tv_resource_jiage"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="13dp"
+               android:layout_marginLeft="10dp"
+               app:layout_constraintTop_toBottomOf="@+id/tv_resource_name"
+               android:text="￥0元/次"
+               app:layout_constraintStart_toStartOf="parent"
+               tools:layout_editor_absoluteX="10dp" />
+   <View
+       android:id="@+id/divder_line"
+       style="@style/dividing_line_large"
+       android:layout_marginTop="13dp"
+       app:layout_constraintTop_toBottomOf="@+id/tv_resource_jiage"
+   />
+<View
+    android:id="@+id/kuai"
+    android:layout_width="2dp"
+    android:layout_height="15dp"
+    android:background="@color/colorPrimary"
+    android:layout_marginTop="10dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/divder_line"
+   />
+
+        <TextView
+            android:id="@+id/xiangqing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:text="详情"
+            app:layout_constraintLeft_toRightOf="@+id/kuai"
+            app:layout_constraintTop_toBottomOf="@+id/divder_line"
+            android:layout_marginStart="20dp" />
+
+<View
+    android:id="@+id/divder_xiang"
+    style="@style/dividing_line"
+    android:layout_marginTop="10dp"
+    app:layout_constraintTop_toBottomOf="@+id/xiangqing"
+></View>
+        <TextView
+            android:id="@+id/tv_resource_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/divder_xiang"
+             android:text="作者"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
+        <TextView
+            android:id="@+id/tv_resource_pushtion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resource_author"
+            android:text="出版社:"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
+        <TextView
+            android:id="@+id/tv_resource_jianjie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resource_pushtion"
+            android:text="简介:"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
+
+        <View
+            android:id="@+id/divder_line_xiang"
+            style="@style/dividing_line_large"
+            android:layout_marginTop="13dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resource_jianjie"
+            />
+
+        <View
+            android:id="@+id/kuai_1"
+            android:layout_width="2dp"
+            android:layout_height="15dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divder_line_xiang"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/pinglun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="评论(0)"
+            app:layout_constraintLeft_toRightOf="@+id/kuai_1"
+            app:layout_constraintTop_toBottomOf="@+id/divder_line_xiang"
+            app:layout_constraintBottom_toTopOf="@+id/divder_line_pinglun"
+            android:layout_marginStart="20dp" />
+
+        <TextView
+            android:id="@+id/pinglun_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查看全部"
+            app:layout_constraintTop_toBottomOf="@+id/divder_line_xiang"
+            app:layout_constraintRight_toLeftOf="@+id/iv_irrow_right"
+            android:layout_marginRight="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/divder_line_pinglun"
+            android:layout_marginEnd="5dp" />
+
+        <ImageView
+            android:id="@+id/iv_irrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_arrow_right"
+            android:layout_marginRight="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/divder_line_xiang"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/divder_line_pinglun"
+            android:layout_marginEnd="10dp" />
+        <View
+            android:id="@+id/divder_line_pinglun"
+            style="@style/dividing_line"
+            android:layout_marginTop="13dp"
+            app:layout_constraintTop_toBottomOf="@+id/kuai_1"
+           />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_pinglun_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/divder_line_pinglun"
+            tools:layout_editor_absoluteX="8dp">
+        </android.support.v7.widget.RecyclerView>
+
+        <View
+            android:id="@+id/divder_tuijian"
+            style="@style/dividing_line_large"
+            android:layout_marginTop="13dp"
+            app:layout_constraintTop_toBottomOf="@+id/rv_pinglun_info"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <View
+            android:id="@+id/kuai_2"
+            android:layout_width="2dp"
+            android:layout_height="15dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divder_tuijian"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/tuijian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="推荐"
+            app:layout_constraintLeft_toRightOf="@+id/kuai_2"
+            app:layout_constraintTop_toBottomOf="@+id/divder_tuijian"
+            app:layout_constraintBottom_toTopOf="@+id/divder_line_tuijian"
+            android:layout_marginStart="20dp" />
+
+        <View
+            android:id="@+id/divder_line_tuijian"
+            style="@style/dividing_line"
+            android:layout_marginTop="13dp"
+            app:layout_constraintTop_toBottomOf="@+id/kuai_2"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            tools:layout_editor_absoluteX="0dp" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_tuijian_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/divder_line_tuijian"
+            >
+        </android.support.v7.widget.RecyclerView>
+        <View
+            android:id="@+id/divder_lin"
+            style="@style/dividing_line_large"
+            app:layout_constraintTop_toBottomOf="@+id/rv_tuijian_info"
+           />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
+</ScrollView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <com.taoxue.ui.view.PlayBottomView
+            android:id="@+id/ac_play_bottom_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#FAFAFA"
+            android:text="Button" />
+        <TextView
+            android:textColor="@drawable/selector_text_color_white_gray"
+            android:id="@+id/startRead"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="阅读"
+            android:gravity="center"
+            android:background="@drawable/selectable_color_primay"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
+</LinearLayout>

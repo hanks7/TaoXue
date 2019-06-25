@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="left"
+    android:orientation="horizontal"
+    android:padding="@dimen/default_margin">
+
+     <ImageView
+        android:id="@+id/lsv_free_iv"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+         android:src="@mipmap/ic_launcher"
+         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/default_margin">
+
+        <TextView
+            android:id="@+id/lsv_free_tv_title"
+            style="@style/TextView_14_wrap"
+            android:textColor="@color/c333333"
+            android:text="love and library" />
+
+        <TextView
+            android:id="@+id/lsv_free_tv_num1"
+            style="@style/TextView_12_wrap"
+            android:layout_marginTop="7dp"
+
+            android:drawableLeft="@mipmap/index_audio"
+            android:text="TextView"
+            android:textColor="@color/c666666" />
+
+        <TextView
+            android:id="@+id/lsv_free_tv_num2"
+            style="@style/TextView_12_wrap"
+            android:layout_marginTop="7dp"
+            android:drawableLeft="@mipmap/index_audio"
+            android:text="TextView"
+            android:textColor="@color/c666666" />
+
+    </LinearLayout>
+</LinearLayout>

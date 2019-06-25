@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_dialog_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp">
+
+                <ImageView
+                    android:id="@+id/my_lib_delete_iv"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:src="@mipmap/close" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/please_choose_payment_method"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/layout_divider_hor"></include>
+          <TextView
+              android:id="@+id/pay_info_tv"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="提示信息:"
+              android:textColor="@color/colorTextPrimary"
+              android:textSize="14sp"
+              android:layout_marginTop="15dp"
+              android:layout_marginLeft="40dp"
+              />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="您没有绑定任何图书馆的读者证"-->
+                <!--android:textColor="@color/colorTextPrimary"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="40dp"-->
+                <!--/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="是否付费阅读"-->
+                <!--android:textColor="@color/colorTextPrimary"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_marginLeft="40dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--/>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                >
+
+                <Button
+                    android:id="@+id/sure_pay_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/shape_dialog_sure"
+                    android:text="是"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+
+                <Button
+                    android:id="@+id/no_pay_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/shape_dialog_cancel"
+                    android:text="否"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

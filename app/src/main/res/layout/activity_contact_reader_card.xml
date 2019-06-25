@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.taoxue.ui.module.login.ContactReaderCardActivity">
+    <com.taoxue.ui.view.TopBar
+        android:id="@+id/introduction_topbar"
+        style="@style/TopBar"
+        app:title="关联读者证"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+  <TextView
+      android:id="@+id/text123"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="使用读者证注册，您将可以免费阅读您所在图书馆在本平台采购的所有数字资源。"
+     app:layout_constraintTop_toBottomOf="@id/introduction_topbar"
+      android:layout_marginTop="20dp"
+      app:layout_constraintStart_toStartOf="parent"
+      android:layout_marginStart="10dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginEnd="10dp"
+      />
+  <Spinner
+      android:id="@+id/sp_province"
+      android:layout_width="150dp"
+      android:layout_height="30dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/text123"
+      android:layout_marginTop="10dp"
+    android:layout_marginStart="10dp"
+      >
+  </Spinner>
+    <Spinner
+        android:id="@+id/sp_lib"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text123"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        >
+    </Spinner>
+
+  <EditText
+      android:id="@+id/et_reader_card"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="请输入读者证号"
+      android:layout_marginTop="20dp"
+      android:paddingLeft="10dp"
+      app:layout_constraintTop_toBottomOf="@+id/sp_province"
+
+      />
+
+    <EditText
+        android:id="@+id/et_pw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/et_reader_card"
+
+        />
+
+    <CheckBox
+        android:id="@+id/r_checkbox"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:background="@drawable/selector_checkbox_style"
+        android:checked="true"
+        android:button="@null"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/et_pw"
+
+        />
+    <TextView
+        android:id="@+id/r_xieyi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读联体读者注册协议"
+        android:layout_marginLeft="10dp"
+        app:layout_goneMarginLeft="10dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/r_checkbox"
+        app:layout_constraintTop_toBottomOf="@+id/et_pw"
+        app:layout_constraintLeft_toRightOf="@+id/r_checkbox"
+        />
+
+    <RelativeLayout
+        android:id="@+id/guanlian_BTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/r_xieyi"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/selector_register_sure" >
+
+        <TextView
+            android:id="@+id/text_login"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="8dp"
+            android:text="关联读者证"
+            android:textColor="@color/white"
+            android:textSize="@dimen/content_text" />
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

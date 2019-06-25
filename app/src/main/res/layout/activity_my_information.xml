@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+
+            <android.support.v7.widget.Toolbar
+                style="@style/TopBar"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clipToPadding="true"
+                android:fitsSystemWindows="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+
+                    <com.taoxue.ui.view.HeaderWaveView
+                        android:id="@+id/header_wave_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/ac_my_rl_my_infor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <com.taoxue.ui.view.CircleImageView
+                            android:id="@+id/ac_my_iv_head"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:layout_marginLeft="@dimen/default_margin_large"
+                            android:layout_marginRight="@dimen/default_margin_large"
+                            android:src="@mipmap/icon_test_head"
+                            app:border_color="@color/white"
+                            app:border_width="2px" />
+
+                        <TextView
+                            android:id="@+id/ac_my_tv_name"
+                            style="@style/TextView_14_wrap"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="1dp"
+                            android:layout_toEndOf="@+id/ac_my_iv_head"
+                            android:layout_toRightOf="@+id/ac_my_iv_head"
+                            android:text="江小月"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.Toolbar>
+
+            <com.taoxue.ui.view.TestView
+                android:id="@+id/ac_my_rl_my_lib"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutText="@string/my_libray"
+                app:layoutTextBackground="@mipmap/myinfor_lib" />
+
+            <com.taoxue.ui.view.TestView
+                android:id="@+id/ac_my_rl_history_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutText="历史记录"
+                android:visibility="gone"
+                app:layoutTextBackground="@mipmap/myinfor_time" />
+
+            <View style="@style/dividing_line_large" />
+
+            <com.taoxue.ui.view.TestView
+                android:id="@+id/ac_my_rl_my_buying_resource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutText="@string/buying_resource"
+                android:visibility="gone"
+                app:layoutTextBackground="@mipmap/myinfor_buying_resource" />
+
+            <View style="@style/dividing_line" />
+
+            <com.taoxue.ui.view.TestView
+                android:id="@+id/ac_my_rl_my_collection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutText="我的收藏"
+                app:layoutTextBackground="@mipmap/myinfor_collect" />
+
+            <com.taoxue.ui.view.TestView
+                android:id="@+id/ac_my_rl_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layoutText="关注的资源商"
+                app:layoutTextBackground="@mipmap/myinfor_download" />
+
+            <View style="@style/dividing_line" />
+
+
+
+            <View style="@style/dividing_line_large" />
+
+            <com.taoxue.ui.view.TestView
+                android:id="@+id/ac_my_rl_share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutText="分享"
+                app:layoutTextBackground="@mipmap/mine_frag_share" />
+
+            <View style="@style/dividing_line" />
+            <com.taoxue.ui.view.TestView
+                android:id="@+id/ac_my_rl_help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutText="@string/helpandfeekback"
+                app:layoutTextBackground="@mipmap/myinfor_good" />
+
+            <View style="@style/dividing_line" />
+            <com.taoxue.ui.view.TestView
+                android:id="@+id/ac_my_rl_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutText="设置"
+                app:layoutTextBackground="@mipmap/mine_frag_setting" />
+
+            <View style="@style/dividing_line" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

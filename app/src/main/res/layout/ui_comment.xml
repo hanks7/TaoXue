@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_divider_hor"></include>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/size5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size20dp"
+                android:text="打个分呗："
+                android:textSize="16sp" />
+
+            <com.taoxue.ui.view.StarBar
+                android:id="@+id/comment_start_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:isIndicator="true"
+                app:starCount="5"
+                app:starDistance="@dimen/size5dp"
+                app:starEmpty="@mipmap/start_gray"
+                app:starFill="@mipmap/start_green"
+                app:starSize="25sp" />
+        </LinearLayout>
+
+
+        <ScrollView
+            android:id="@+id/ll2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/commit_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/size10dp"
+                android:paddingLeft="@dimen/size20dp"
+                android:paddingRight="@dimen/size10dp"
+                android:paddingTop="@dimen/size10dp">
+
+                <EditText
+                    android:id="@+id/comment_Content_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="2"
+                    android:background="@drawable/shape_comment_commit"
+                    android:gravity="center_vertical"
+                    android:hint="请添加评论内容"
+                    android:lines="2"
+                    android:paddingLeft="@dimen/size10dp"
+                    android:paddingRight="@dimen/size10dp"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/cp_gray_deep"
+                    android:textColorHint="@color/c999999"
+                    android:textCursorDrawable="@drawable/curson"
+                    android:textSize="14sp" />
+                <!--android:paddingTop="@dimen/size2dp"-->
+                <!--android:paddingBottom="@dimen/size2dp"-->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom">
+
+                    <RelativeLayout
+                        android:id="@+id/coment_commit_ll"
+                        android:layout_width="80dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+
+                        android:background="@drawable/selector_register_sure">
+
+                        <TextView
+                            android:id="@+id/coment_commit_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="评论"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/content_text" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

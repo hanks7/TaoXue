@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.zhy.android.percent.support.PercentLinearLayout
+        android:id="@+id/classification_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@color/white"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/item_fa_home_gv_new_3_iv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/default_bg"
+            app:layout_heightPercent="100%w" />
+
+        <TextView
+            android:id="@+id/item_fa_home_gv_new_3_tv_title"
+            style="@style/style_title"
+            android:maxLines="2"
+            android:singleLine="true"
+            tools:text="成长的面包" />
+
+        <TextView
+            android:id="@+id/item_fa_home_gv_new_3_tv_description"
+            style="@style/style_content"
+            android:layout_marginTop="@dimen/default_margin_small"
+            android:maxLines="2"
+            tools:text="在云彩面包的魔力下我们都面包的魔力下我们都面包的魔力下我们都面包的魔力下我们都面包的魔力下我们都将摆脱恐惧" />
+
+    </com.zhy.android.percent.support.PercentLinearLayout>
+</com.zhy.android.percent.support.PercentLinearLayout>

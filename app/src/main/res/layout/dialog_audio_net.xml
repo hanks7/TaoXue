@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_dialog_bg"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingBottom="10dp"
+        >
+
+        <!--<View&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="5px"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:background="@color/colorPrimary"&ndash;&gt;-->
+        <!--&lt;!&ndash;/>-->
+    <!--&lt;!&ndash;&ndash;&gt;-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="流量提醒"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/colorTextPrimary"
+            />
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_marginTop="12dp"
+              android:layout_marginBottom="12dp"
+              android:textSize="16sp"
+              android:lineSpacingExtra="3dp"
+              android:text="当前网络无wifi,继续试听可能会产生网络流量费用"
+              android:layout_height="wrap_content" />
+        </LinearLayout>
+        <include layout="@layout/layout_divider_hor"></include>
+        <TextView
+            android:id="@+id/no_wifi_play_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="继续播放"
+            android:gravity="center"
+             android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            />
+        <include layout="@layout/layout_divider_hor"></include>
+        <TextView
+            android:id="@+id/no_wifi_no_play_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="不再提醒"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="18sp"
+            />
+        <include layout="@layout/layout_divider_hor"></include>
+        <TextView
+            android:id="@+id/delete_play_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="18sp"
+            />
+        <include layout="@layout/layout_divider_hor"></include>
+
+
+    </LinearLayout>
+</RelativeLayout>

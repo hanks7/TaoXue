@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/topbar_height">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="25dp"
+        android:layout_toLeftOf="@+id/fa_home_iv_zxing"
+        android:layout_toRightOf="@+id/fa_home_iv_head"
+        android:paddingRight="12dp">
+
+        <include layout="@layout/include_linearlayout_title_bar" />
+    </LinearLayout>
+
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/fa_home_iv_head"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/fa_home_iv_zxing"
+        android:layout_centerVertical="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:paddingLeft="9dp"
+        android:paddingRight="9dp"
+        android:text="合肥 "
+        android:textColor="@color/white"
+         />
+
+
+</RelativeLayout>

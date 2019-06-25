@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/setting_layout_padding">
+
+    <ImageView
+        android:id="@+id/iv_title_pic"
+        style="@style/style_mine_icon"
+        android:layout_marginLeft="10px"
+        android:src="@mipmap/myinfor_time" />
+
+    <RelativeLayout
+        android:id="@+id/rl_title_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/iv_entry"
+        android:layout_toRightOf="@+id/iv_title_pic">
+
+
+        <TextView
+            android:id="@+id/tv_title_name"
+            style="@style/style_mine_text"
+            android:textColor="@color/c333333"
+            android:text="历史记录" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_entry"
+        style="@style/home_icon_entry"
+        android:layout_marginLeft="@dimen/default_margin_large"
+        android:layout_marginRight="@dimen/default_margin" />
+</RelativeLayout>

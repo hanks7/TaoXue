@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.taoxue.ui.module.login.RelationReaderCardActivity">
+    <com.taoxue.ui.view.TopBar
+        android:id="@+id/topbar"
+        style="@style/TopBar"
+        app:title="关联读者证" >
+
+        <TextView
+            android:id="@+id/reader_skip_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/size10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/content_text"
+            android:text="@string/tiaoguo"/>
+    </com.taoxue.ui.view.TopBar>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:lineSpacingExtra="4dp"
+        android:text="验证您的读者身份后，您将可以免费阅读您所在图书馆采购的所有数字资源"/>
+    <LinearLayout
+        style="@style/login_ll"
+        >
+        <ImageView
+            style="@style/login_icon_left"
+            android:src="@mipmap/icon_name"
+            />
+
+        <EditText
+            android:id="@+id/relReaderCard_name_Edt"
+            style="@style/login_editText"
+            android:hint="请输入您的读者证姓名"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        >
+        <LinearLayout
+            style="@style/login_ll_code"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            >
+            <ImageView
+                style="@style/login_icon_left"
+                android:src="@mipmap/icon_reader_card"
+                />
+            <EditText
+                android:id="@+id/relReaderCard_phone_code_Edt"
+                style="@style/login_editText"
+                android:hint="请输入读者证号码"
+                />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:background="@drawable/selector_register_sure" >
+            <TextView
+                android:id="@+id/relReaderCard_codeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="验   证" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/relReaderCard_BTN"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/selector_default_button"
+        android:text="完成"
+        android:visibility="gone"
+        android:textColor="@color/white" />
+
+
+
+
+</LinearLayout>

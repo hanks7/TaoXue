@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top_background_fl"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/default_top_height"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <com.taoxue.ui.view.BackButton
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/default_top_height"
+        android:layout_height="match_parent"
+        android:background="?attr/actionBarItemBackground"
+        android:padding="14dp"
+        android:src="@mipmap/ic_back_white" />
+
+    <TextView
+        android:id="@+id/tv_topTitle"
+        style="@style/TextView_16_wrap"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:paddingBottom="6dp"
+        android:paddingLeft="@dimen/normal"
+        android:paddingRight="@dimen/normal"
+        android:paddingTop="6dp"
+        android:text="@string/app_name"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/btn_top_right"
+        android:layout_width="@dimen/topbar_height"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:paddingBottom="14dp"
+        android:paddingTop="14dp" />
+
+    <TextView
+        android:id="@+id/tv_top_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:padding="14dp"
+        android:textColor="@drawable/selector_text_color_white_gray" />
+
+
+</RelativeLayout>

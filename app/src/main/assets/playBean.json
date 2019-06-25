@@ -1,0 +1,150 @@
+{
+  "code": 1,
+  "data": {
+    "avg_score": 4,
+    "collection_num": 2,
+    "comment_num": 1,
+    "description": "内向性格研究领域的专家马蒂·奥尔森·兰妮博士（Marti Olsen Laney, Psy.D.）继《内向者优势》后的又一力作。她将多年的临川研究经验与自己身为一个内向者的成长经历作为蓝本，为我们总结出了培养好一个内向性格孩子的种种建议。书中更是用不少篇幅向我们解释了内向、外向这两种不同的性格气质形成的原因，科学生动、简明易懂，十分值得一听。",
+    "is_collection": "0",
+    "is_comment": "0",
+    "is_praise": "0",
+    "praise_num": 0,
+    "recommend_forYou": [
+      {
+        "author": "李白",
+        "collection_num": 2,
+        "description": "古诗学堂第一部",
+        "read_num": 24,
+        "resource_id": "402883d26033f002016034136f6b001c",
+        "resource_name": "古诗学堂第一部",
+        "resource_picture": "http://117.71.57.47:10000/resource/uploadFiles/2017/12/08/1512702133303059421_150.png"
+      },
+      {
+        "author": "刘墉",
+        "collection_num": 2,
+        "description": "古诗学堂第二部",
+        "read_num": 24,
+        "resource_id": "402883d26033f00201603415ef9e001e",
+        "resource_name": "古诗学堂第二部",
+        "resource_picture": "http://117.71.57.47:10000/resource/uploadFiles/2017/12/08/1512702328772081683_150.png"
+      },
+      {
+        "author": "白居易",
+        "collection_num": 2,
+        "description": "春眠不觉晓，处处闻啼鸟",
+        "read_num": 24,
+        "resource_id": "402883d261221a75016145c62c27009a",
+        "resource_name": "春晓",
+        "resource_picture": "http://117.71.57.47:11000/manager/upload/402883d261504efb0161505b9f470003.jpg"
+      },
+      {
+        "author": "",
+        "collection_num": 2,
+        "description": "内向性格研究领域的专家马蒂·奥尔森·兰妮博士（Marti Olsen Laney, Psy.D.）继《内向者优势》后的又一力作。她将多年的临川研究经验与自己身为一个内向者的成长经历作为蓝本，为我们总结出了培养好一个内向性格孩子的种种建议。书中更是用不少篇幅向我们解释了内向、外向这两种不同的性格气质形成的原因，科学生动、简明易懂，十分值得一听。",
+        "read_num": 24,
+        "resource_id": "402883d2615a382c01615a7c8dbe0158",
+        "resource_name": "樊登读书会-内向还在的潜在优势",
+        "resource_picture": "http://117.71.57.47:11000/manager/upload/402883d2615a3aff01615a7c64ab0001.jpg"
+      }
+    ],
+    "resource_name": "樊登读书会-内向还在的潜在优势"
+  },
+  "item": [
+    {
+      "file_type": "audio",
+      "volumn": [
+        {
+          "order": 1,
+          "resource_name": "反脆弱_试听",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 3,
+          "resource_name": "深度工作试听（有广告）32000-128",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        }
+      ]
+    }
+  ],
+  "msg": "操作成功"
+}

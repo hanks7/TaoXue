@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:id="@+id/empty_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_my_collect">
+
+    <ImageView
+        android:id="@+id/empty_view_iv"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@mipmap/no_data" />
+
+    <TextView
+        android:id="@+id/empty_view_tv"
+        style="@style/TextView_12_wrap.gray"
+        android:text="@string/tempare_no_data" />
+
+</LinearLayout>

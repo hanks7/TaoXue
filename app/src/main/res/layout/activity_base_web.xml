@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_lib_home_web"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.taoxue.ui.module.web.WebLibHomeActivity">
+
+    <com.taoxue.ui.view.TopBar
+        android:id="@+id/top_bar"
+        style="@style/TopBar" />
+
+    <com.taoxue.ui.view.ProgressBarWebView
+        android:id="@+id/lib_home_web_view"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>
