@@ -3,7 +3,5 @@
     package="tv.danmaku.ijk.media.player">
 
     <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="22"
         tools:overrideLibrary="tv.danmaku.ijk.media.exo" />
 </manifest>
