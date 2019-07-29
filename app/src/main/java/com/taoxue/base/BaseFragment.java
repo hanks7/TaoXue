@@ -8,6 +8,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.taoxue.http.HttpApis;
 import com.taoxue.utils.AppUtils;
 import com.taoxue.utils.CommonUtils;
 import com.taoxue.utils.LogUtils;
+import com.taoxue.utils.Ulog;
 import com.taoxue.utils.UtilIntent;
 import com.taoxue.utils.UtilTools;
 
@@ -38,6 +40,12 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
         solveFragmentBug(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i(Ulog.TAG + "ui页面", "(" + getClass().getSimpleName() + ".java:0)");
     }
 
     /**

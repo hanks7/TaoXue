@@ -10,7 +10,7 @@ import static com.taoxue.app.Constants.IS_LOG;
  */
 
 public class Ulog {
-    private static final String TAG = "-CC-";
+    public static final String TAG = "-CC-";
 
     public static void D(String msg) {
         if (IS_LOG)

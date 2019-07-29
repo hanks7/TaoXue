@@ -82,17 +82,20 @@ public class TaoXueApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        MultiDex.install(this);
+
         Config.DEBUG = true;
         app = this;
         JudgeisLogin();
-        initDisplayOpinion();
-        initStorage();
+
+
 
 
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
+                MultiDex.install(app.getApplicationContext());
+                initDisplayOpinion();
+                initStorage();
                 HttpAdapter.init();
                 ImageLoaderUtil.init(app.getApplicationContext(), AppConfig.getAppCachePath());
                 UMShareAPI.get(app.getApplicationContext());
