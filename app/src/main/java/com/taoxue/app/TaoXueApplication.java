@@ -2,6 +2,7 @@ package com.taoxue.app;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
@@ -27,48 +28,47 @@ import java.io.File;
 
 /**
  * Created by gentl on 2016/11/16.
- *
- *
- *
- 密钥库类型: JKS
- 密钥库提供方: SUN
-
- 您的密钥库包含 1 个条目
-
- 别名: qwe
- 创建日期: 2014-10-17
- 条目类型: PrivateKeyEntry
- 证书链长度: 1
- 证书[1]:
- 所有者: CN=11111111
- 发布者: CN=11111111
- 序列号: 9ab9fde
- 有效期开始日期: Fri Oct 17 17:59:27 CST 2014, 截止日期: Tue Oct 11 17:59:27 CST 2039
- 证书指纹:
- MD5: B5:B0:AE:AD:05:25:19:B9:36:BB:B2:92:1C:53:C8:AD
- SHA1: 45:C3:91:60:1F:3B:EC:73:7B:68:9D:F4:4C:65:9D:40:17:85:66:6C
- SHA256: C5:72:8F:25:E1:6C:2D:D0:BC:48:7F:E1:57:E2:5E:EA:48:BC:08:29:AA:A5:FC:A4:13:54:CF:1B:BA:E1:67:3F
- 签名算法名称: SHA256withRSA
- 版本: 3
-
- 扩展:
-
- #1: ObjectId: 2.5.29.14 Criticality=false
- SubjectKeyIdentifier [
- KeyIdentifier [
- 0000: DD C6 90 F9 23 73 06 92   D0 ED 68 9D 14 BC 12 3B  ....#s....h....;
- 0010: 45 1A 7E E8                                        E...
- ]
- ]
-
-
-
- *******************************************
- *******************************************
-
+ * <p>
+ * <p>
+ * <p>
+ * 密钥库类型: JKS
+ * 密钥库提供方: SUN
+ * <p>
+ * 您的密钥库包含 1 个条目
+ * <p>
+ * 别名: qwe
+ * 创建日期: 2014-10-17
+ * 条目类型: PrivateKeyEntry
+ * 证书链长度: 1
+ * 证书[1]:
+ * 所有者: CN=11111111
+ * 发布者: CN=11111111
+ * 序列号: 9ab9fde
+ * 有效期开始日期: Fri Oct 17 17:59:27 CST 2014, 截止日期: Tue Oct 11 17:59:27 CST 2039
+ * 证书指纹:
+ * MD5: B5:B0:AE:AD:05:25:19:B9:36:BB:B2:92:1C:53:C8:AD
+ * SHA1: 45:C3:91:60:1F:3B:EC:73:7B:68:9D:F4:4C:65:9D:40:17:85:66:6C
+ * SHA256: C5:72:8F:25:E1:6C:2D:D0:BC:48:7F:E1:57:E2:5E:EA:48:BC:08:29:AA:A5:FC:A4:13:54:CF:1B:BA:E1:67:3F
+ * 签名算法名称: SHA256withRSA
+ * 版本: 3
+ * <p>
+ * 扩展:
+ * <p>
+ * #1: ObjectId: 2.5.29.14 Criticality=false
+ * SubjectKeyIdentifier [
+ * KeyIdentifier [
+ * 0000: DD C6 90 F9 23 73 06 92   D0 ED 68 9D 14 BC 12 3B  ....#s....h....;
+ * 0010: 45 1A 7E E8                                        E...
+ * ]
+ * ]
+ * <p>
+ * <p>
+ * <p>
+ * ******************************************
+ * ******************************************
  */
 
-public class TaoXueApplication extends MultiDexApplication{
+public class TaoXueApplication extends MultiDexApplication {
     private static TaoXueApplication app;
     private UserModel userModel;
     private SharedPreferences sp;
@@ -85,19 +85,22 @@ public class TaoXueApplication extends MultiDexApplication{
         MultiDex.install(this);
         Config.DEBUG = true;
         app = this;
-        HttpAdapter.init();
-
-        ImageLoaderUtil.init(this, AppConfig.getAppCachePath());
-        initStorage();
-        initDisplayOpinion();
         JudgeisLogin();
+        initDisplayOpinion();
+        initStorage();
 
-        UMShareAPI.get(this);
 
-
-        TxtReader.initlize(this);//txt阅读器初始化
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                HttpAdapter.init();
+                ImageLoaderUtil.init(app.getApplicationContext(), AppConfig.getAppCachePath());
+                UMShareAPI.get(app.getApplicationContext());
+                TxtReader.initlize(app.getApplicationContext());//txt阅读器初始化
+                return null;
+            }
+        }.execute();
     }
-
 
 
     private void initDisplayOpinion() {
@@ -117,7 +120,7 @@ public class TaoXueApplication extends MultiDexApplication{
 
     public void setUserModel(UserModel userModel) {
         this.userModel = userModel;
-        islogin=true;
+        islogin = true;
         SPUtil.put("UserModel", UtilGson.toJson(userModel));
 
     }
@@ -128,14 +131,14 @@ public class TaoXueApplication extends MultiDexApplication{
         return userModel;
 
     }
-   public String getUserId(){
-        if (getUserModel().equals("")){
-            return  "";
-        }else{
-           return getUserModel().getUser_id();
-        }
-   }
 
+    public String getUserId() {
+        if (getUserModel().equals("")) {
+            return "";
+        } else {
+            return getUserModel().getUser_id();
+        }
+    }
 
 
     public boolean isLogin() {
@@ -144,7 +147,7 @@ public class TaoXueApplication extends MultiDexApplication{
 
     public boolean JudgeisLogin() {
         getUserModel();
-        islogin=!(SPUtil.get("UserModel", "")).equals("");
+        islogin = !(SPUtil.get("UserModel", "")).equals("");
         return islogin;
     }
 
@@ -156,7 +159,7 @@ public class TaoXueApplication extends MultiDexApplication{
 
     public boolean isFirstEnter() {
         sp = getApplicationContext().getSharedPreferences("info", Context.MODE_PRIVATE);
-        return sp.getInt(CacheKey.FIRST_ENTER, 0)!=UtilSystem.getVersionCode();
+        return sp.getInt(CacheKey.FIRST_ENTER, 0) != UtilSystem.getVersionCode();
     }
 
     public void setNotFirstEnter() {
@@ -180,11 +183,14 @@ public class TaoXueApplication extends MultiDexApplication{
 
         return true;
     }
+
     //********************************************缓存*******************************************************
     private HttpProxyCacheServer proxy;
+
     public static HttpProxyCacheServer getProxy() {
         return app.proxy == null ? (app.proxy = app.newProxy()) : app.proxy;
     }
+
     /**
      * 创建缓存代理服务,带文件目录的.
      */
