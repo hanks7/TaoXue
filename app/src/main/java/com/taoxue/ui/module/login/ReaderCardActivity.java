@@ -155,7 +155,7 @@ public class ReaderCardActivity extends BaseActivity {
 
 //
 //                    isVerificationReadCard=true;
-//                    name=TaoXueApplication.get().getUserModel().getName();
+//                    name=BaseApplication.get().getUserModel().getName();
 //                    LogUtils.D("name---->"+name);
 //                    cgs_id=readerCodeModel.getCgs_id();
 //                    //判断注册时的姓名 与通过读者证获取的姓名是否相同
@@ -216,7 +216,7 @@ public class ReaderCardActivity extends BaseActivity {
 
 //               isTestReaCard=true;
 //               isVerificationReadCard=true;
-//               readerXingEdt.setText(CommitContent.nullToSting(TaoXueApplication.get().getUserModel().getName()));
+//               readerXingEdt.setText(CommitContent.nullToSting(BaseApplication.get().getUserModel().getName()));
            }
        });
     }

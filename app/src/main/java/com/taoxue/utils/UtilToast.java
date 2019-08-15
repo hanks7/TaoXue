@@ -2,7 +2,7 @@ package com.taoxue.utils;
 
 import android.widget.Toast;
 
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 
 /**
  * Created by User on 2017/4/6.
@@ -22,7 +22,7 @@ public class UtilToast {
     public static void showText( Object strToast) {
         LogUtils.i("Toast",strToast);
         if (toast == null) {
-            toast = Toast.makeText(TaoXueApplication.get(), "", Toast.LENGTH_SHORT);
+            toast = Toast.makeText(BaseApplication.get(), "", Toast.LENGTH_SHORT);
         }
         toast.setText(strToast+"");
         toast.show();

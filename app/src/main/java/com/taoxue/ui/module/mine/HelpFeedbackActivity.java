@@ -7,8 +7,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
-import com.taoxue.ui.module.login.ContactReaderCardActivity;
+import com.taoxue.app.BaseApplication;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,7 +26,7 @@ public class HelpFeedbackActivity extends AppCompatActivity {
         // 从assets目录下面的加载html
         wvReaderCard.loadUrl(url);
         wvReaderCard.addJavascriptInterface(HelpFeedbackActivity.this,"android");
-        wvReaderCard.loadUrl("javascript:setUserId("+ TaoXueApplication.get().getUserId()+")");
+        wvReaderCard.loadUrl("javascript:setUserId("+ BaseApplication.get().getUserId()+")");
 //        wvReaderCard.addJavascriptInterface(ContactReaderCardActivity.this,"android");
     }
     @JavascriptInterface

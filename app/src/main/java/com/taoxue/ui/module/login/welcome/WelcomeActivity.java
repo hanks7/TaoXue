@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.utils.StatusBarCompat;
 import com.taoxue.utils.permission.PermissionReq;
@@ -37,7 +37,7 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     private void init() {
-        TaoXueApplication.get().setNotFirstEnter();
+        BaseApplication.get().setNotFirstEnter();
         ViewPager pager = (ViewPager) findViewById(R.id.welcome_vp);
         pager.setAdapter(new WelcomePagerAdapter(getSupportFragmentManager()));
         pager.setCurrentItem(FRIST_FRAGMENT);

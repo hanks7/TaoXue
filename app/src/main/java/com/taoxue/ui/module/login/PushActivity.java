@@ -10,14 +10,13 @@ import android.widget.TextView;
 import com.taoxue.MainActivity;
 import com.taoxue.R;
 import com.taoxue.app.Constants;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.ui.module.login.welcome.WelcomeActivity;
 import com.taoxue.ui.module.search.HomeLibActivity;
 import com.taoxue.ui.module.yuejia.ResourceDetailActivity;
 import com.taoxue.utils.LogUtils;
 import com.taoxue.utils.StatusBarCompat;
-import com.taoxue.utils.Ulog;
 import com.taoxue.utils.UtilIntent;
 
 import butterknife.BindView;
@@ -32,7 +31,7 @@ public class PushActivity extends BaseActivity {
     @BindView(R.id.push_time_tv)
     TextView tvTime;
     int time = 1;
-    final int totalCount = 5;
+    final int totalCount = 0;
     boolean skiped;
 
     @Override
@@ -65,7 +64,8 @@ public class PushActivity extends BaseActivity {
                 LogUtils.i("path1:", path1);
                 LogUtils.i("queryString:", queryString);
                 if (host.equals("schemedemo")) {
-                    launch(ResourceDetailActivity.class, id);finish();
+                    launch(ResourceDetailActivity.class, id);
+                    finish();
                 } else if (host.equals("libaryunited")) {
                     Bundle bundle = new Bundle();
                     bundle.putString("ids", cgs_id);
@@ -122,14 +122,10 @@ public class PushActivity extends BaseActivity {
             return;
         }
         UtilIntent.intentDIYLeftToRight(this,
-                TaoXueApplication.get().isFirstEnter() ? WelcomeActivity.class : MainActivity.class,
+                BaseApplication.get().isFirstEnter() ? WelcomeActivity.class : MainActivity.class,
                 android.R.anim.fade_in, android.R.anim.fade_out);
         finish();
     }
 
-    //跳转页面
-    private void activityToDetail(Class clazz, String id, String type) {
-        Ulog.i("activityToDetail", "clazz--" + clazz + "id--" + id + "type--" + type);
-        launch(clazz, id);
-    }
+
 }

@@ -12,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseNoDialogListener;
@@ -124,7 +124,7 @@ public class ContactReaderCardActivity extends BaseActivity {
         @Override
         protected void onSuccess(BaseResultModel<UserModel> userModelBaseResultModel) {
              if (userModelBaseResultModel.getCode()==1&&userModelBaseResultModel.getData()!=null){
-                 TaoXueApplication.get().setUserModel(userModelBaseResultModel.getData());
+                 BaseApplication.get().setUserModel(userModelBaseResultModel.getData());
                  ContactReaderCardActivity.this.setResult(LoginActivity.LOGIN_READER_CARD_CODE);
                  finish();
              }else{

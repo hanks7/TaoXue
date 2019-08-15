@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
@@ -68,7 +68,7 @@ public class NickNameActivity extends BaseActivity {
         switch (code) {
             case 101:
                 HttpAdapter.getService().updUserInfoName(
-                        TaoXueApplication.get().getUserModel().getUser_id(),
+                        BaseApplication.get().getUserModel().getUser_id(),
                         str
                 )
                         .enqueue(new OnResponseListener<BaseResultModel<BaseModel>>(this) {
@@ -81,7 +81,7 @@ public class NickNameActivity extends BaseActivity {
                 break;
             case 102:
                 HttpAdapter.getService().updUserInfoHangye(
-                        TaoXueApplication.get().getUserModel().getUser_id(),
+                        BaseApplication.get().getUserModel().getUser_id(),
                         str
                 )
                         .enqueue(new OnResponseListener<BaseResultModel<BaseModel>>(this) {
@@ -94,7 +94,7 @@ public class NickNameActivity extends BaseActivity {
                 break;
             case 103:
                 HttpAdapter.getService().updUserInfoJob(
-                        TaoXueApplication.get().getUserModel().getUser_id(),
+                        BaseApplication.get().getUserModel().getUser_id(),
                         str
                 )
                         .enqueue(new OnResponseListener<BaseResultModel<BaseModel>>(this) {

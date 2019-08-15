@@ -9,7 +9,7 @@ import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 public class NetWorkUtil {
 
     public static boolean isWifiAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) TaoXueApplication.get()
+        ConnectivityManager connectivityManager = (ConnectivityManager) BaseApplication.get()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected() && networkInfo
@@ -321,7 +321,7 @@ public class NetWorkUtil {
     public static String getProvider() {
         String provider = "未知";
         try {
-            TelephonyManager telephonyManager = (TelephonyManager) TaoXueApplication.get()
+            TelephonyManager telephonyManager = (TelephonyManager) BaseApplication.get()
                     .getSystemService(Context.TELEPHONY_SERVICE);
             String IMSI = telephonyManager.getSubscriberId();
             Log.v("tag", "getProvider.IMSI:" + IMSI);
@@ -421,7 +421,7 @@ public class NetWorkUtil {
     private static int getNetworkClass() {
         int networkType = NETWORK_TYPE_UNKNOWN;
         try {
-            final NetworkInfo network = ((ConnectivityManager) TaoXueApplication.get()
+            final NetworkInfo network = ((ConnectivityManager) BaseApplication.get()
                     .getSystemService(Context.CONNECTIVITY_SERVICE))
                     .getActiveNetworkInfo();
             if (network != null && network.isAvailable()
@@ -464,12 +464,12 @@ public class NetWorkUtil {
     }
 
     private static TelephonyManager getTelManager() {
-        return (TelephonyManager) TaoXueApplication.get().getSystemService(
+        return (TelephonyManager) BaseApplication.get().getSystemService(
                 Context.TELEPHONY_SERVICE);
     }
 
     private static ConnectivityManager getConnectManager() {
-        return ((ConnectivityManager) TaoXueApplication.get()
+        return ((ConnectivityManager) BaseApplication.get()
                 .getSystemService(Context.CONNECTIVITY_SERVICE));
     }
 
@@ -482,7 +482,7 @@ public class NetWorkUtil {
                     && network.isConnected()) {
                 int type = network.getType();
                 if (type == ConnectivityManager.TYPE_WIFI) {
-                    @SuppressLint("WifiManagerLeak") WifiManager wifiManager = (WifiManager) TaoXueApplication.get()
+                    @SuppressLint("WifiManagerLeak") WifiManager wifiManager = (WifiManager) BaseApplication.get()
                             .getSystemService(Context.WIFI_SERVICE);
                     WifiInfo wifiInfo = wifiManager.getConnectionInfo();
                     if (wifiInfo != null) {
@@ -505,7 +505,7 @@ public class NetWorkUtil {
                     && network.isConnected()) {
                 int type = network.getType();
                 if (type == ConnectivityManager.TYPE_WIFI) {
-                    WifiManager wifiManager = (WifiManager) TaoXueApplication.get()
+                    WifiManager wifiManager = (WifiManager) BaseApplication.get()
                             .getSystemService(Context.WIFI_SERVICE);
 
                     WifiInfo wifiInfo = wifiManager.getConnectionInfo();

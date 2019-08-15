@@ -12,25 +12,19 @@ import android.widget.TextView;
 
 import com.taoxue.R;
 import com.taoxue.app.Constants;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
 import com.taoxue.http.OnResponseNoDialogListener;
 import com.taoxue.ui.model.BaseModel;
 import com.taoxue.ui.model.BaseResultModel;
-import com.taoxue.ui.model.CheckSignModel;
 import com.taoxue.ui.model.UserModel;
 import com.taoxue.ui.module.classification.HttpRequest;
-import com.taoxue.ui.module.login.ologin.BaseUiListener;
 import com.taoxue.ui.module.login.ologin.LoginChar;
 import com.taoxue.ui.module.login.ologin.TecentLogin;
-import com.taoxue.ui.module.login.ologin.UserInfoUiListener;
-import com.taoxue.ui.module.login.ologin.WXLogin;
-import com.taoxue.ui.module.login.ologin.WXLoginListener;
 import com.taoxue.ui.view.TopBar;
 import com.taoxue.utils.LogUtils;
-import com.taoxue.utils.UtilIntent;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -237,7 +231,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             protected void onSuccess(BaseResultModel<UserModel> resultModel) {
                 showToast(resultModel.getMsg());
-                TaoXueApplication.get().setUserModel(resultModel.getData());
+                BaseApplication.get().setUserModel(resultModel.getData());
                 finish();
             }
         });
@@ -315,7 +309,7 @@ public class LoginActivity extends BaseActivity {
         HttpRequest.checkWeixinLogin(openid, access_token, new HttpRequest.RequestBaseModelCallBack() {
             @Override
             public void onSuccess(BaseModel baseModel) {
-                TaoXueApplication.get().setUserModel((UserModel) baseModel);
+                BaseApplication.get().setUserModel((UserModel) baseModel);
                 finish();
             }
 
@@ -346,7 +340,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             protected void onSuccess(BaseResultModel<UserModel> checkSignModel) {
                 if (checkSignModel.getCode() == 1) {
-                    TaoXueApplication.get().setUserModel(checkSignModel.getData());
+                    BaseApplication.get().setUserModel(checkSignModel.getData());
                     finish();
                 } else {
                     showToast(checkSignModel.getMsg());

@@ -173,23 +173,24 @@ public class BookIntroductionActivity extends BaseActivity {
 
     /**
      * 跳转到视频播放界面
+     *
      * @param urlBean
      */
     private void intentPlay(UrlPath urlBean) {
         Bundle bundle = new Bundle();
         bundle.putString("user_id", CommitContent.isLogin(this));
         bundle.putString("resource_id", id);
-        UtilIntent.intentDIY(this,PlayActivity.class,bundle);
+        UtilIntent.intentDIY(this, PlayActivity.class, bundle);
     }
 
     //获取文件路径
     private void initFileUrl(String resource_id, final String user_id) {
-         HttpAdapter.getService().getFileUrl2(resource_id, user_id).enqueue(new OnResponseNoDialogListener<BaseResultModel<FileUrl>>() {
+        HttpAdapter.getService().getFileUrl2(resource_id, user_id).enqueue(new OnResponseNoDialogListener<BaseResultModel<FileUrl>>() {
             @Override
             protected void onSuccess(BaseResultModel<FileUrl> model) {
                 if (model.getCode() == 1 && null != model.getData().getItem() && !"[]".equals(model.getData().getItem() + "") && model.getData().getItem().size() > 0) {
                     UrlPath urlBean = new UrlPath();
-                    FileUrl  seclectModel = model.getData();
+                    FileUrl seclectModel = model.getData();
                     urlBean.setUrlModel(model.getData().getItem());
 
                     if (null != seclectModel && !seclectModel.equals("null")) {
@@ -206,7 +207,8 @@ public class BookIntroductionActivity extends BaseActivity {
         });
     }
 
-    String  yuurl="http://117.71.57.47:10000/resource/uploadFiles/baidutts.apk";
+    String yuurl = "http://117.71.57.47:10000/resource/uploadFiles/baidutts.apk";
+
     //根据文件类型跳转至不同的activity
     private void toActivityByFileType(UrlPath urlBean) {
         if (fileType.equals("audio")) {
@@ -217,16 +219,12 @@ public class BookIntroductionActivity extends BaseActivity {
             intentPlay(urlBean);
         } else if (fileType.equals("doc")) {
             if (urlBean.getUrlModel().get(0).getVolumn().get(0).getUrl().substring(urlBean.getUrlModel().get(0).getVolumn().get(0).getUrl().lastIndexOf(".") + 1).equals("txt")) {
-              TxtReader.getTxtReader().openBookByUrl(urlBean.getUrlModel().get(0).getVolumn().get(0).getUrl(), BookIntroductionActivity.this);
+                TxtReader.getTxtReader().openBookByUrl(urlBean.getUrlModel().get(0).getVolumn().get(0).getUrl(), BookIntroductionActivity.this);
             } else {
                 launch(DocReadActivity.class, urlBean, data);
             }
         }
     }
-
-
-
-
 
 
     private class OnItemClick implements OnItemAdapterClickListener {
@@ -246,7 +244,7 @@ public class BookIntroductionActivity extends BaseActivity {
     {
         RvComAdapter rvCommonAdapter = new RvComAdapter.Builder<>(this, R.layout.my_lib_choice_item, myLibInfos)
                 .setOnItemAdapterClickListener(new OnItemClick())
-                .into(dialogRecyclerView,new InitViewCallBack<MyLibInfo>() {
+                .into(dialogRecyclerView, new InitViewCallBack<MyLibInfo>() {
                     @Override
                     public void convert(RvViewHolder viewHolder, MyLibInfo myLibInfo, int i) {
                         viewHolder.setText(R.id.my_lib_name_tv, myLibInfo.getName());
@@ -311,22 +309,20 @@ public class BookIntroductionActivity extends BaseActivity {
 
     Dialog payDialog;
 
-    private void zhifubaoPayResult(String result){//支付宝支付结果
+    private void zhifubaoPayResult(String result) {//支付宝支付结果
         LogUtils.D("fanhuizhifujieguo");
         payDialog.dismiss();
-        final String user_id=CommitContent.isLogin(this);
-        Call<BaseResultModel>call=HttpAdapter.getService().zhifubaoPayResult(result);
-        call.enqueue(new OnResponseNoDialogListener<BaseResultModel>() {
+        final String user_id = CommitContent.isLogin(this);
+        HttpAdapter.getService().zhifubaoPayResult(result).enqueue(new OnResponseNoDialogListener<BaseResultModel>() {
             @Override
             protected void onSuccess(BaseResultModel baseResultModel) {
-                LogUtils.D("baseResultModel---->"+baseResultModel.toString());
-                if (baseResultModel.getCode()==1){
-                    initFileUrl(id,user_id);
+                LogUtils.D("baseResultModel---->" + baseResultModel.toString());
+                if (baseResultModel.getCode() == 1) {
+                    initFileUrl(id, user_id);
                 }
             }
         });
     }
-
 
 
     /**
@@ -341,9 +337,9 @@ public class BookIntroductionActivity extends BaseActivity {
             public void onPayCallBack(int status, String resultStatus, String progress) {
                 //支付失败  status--->0resultStatus--->0progress--->支付失败
                 //支付成功   status--->9000resultStatus--->9000progress--->支付成功
-                LogUtils.D("status--->"+status+"resultStatus--->"+resultStatus+"progress--->"+progress);
+                LogUtils.D("status--->" + status + "resultStatus--->" + resultStatus + "progress--->" + progress);
 //                 if (status==)
-                if (status==9000) {//支付成功
+                if (status == 9000) {//支付成功
                     zhifubaoPayResult(progress);
                 }
             }
@@ -352,15 +348,15 @@ public class BookIntroductionActivity extends BaseActivity {
     }
 
 
-    private  void zhifubaoPay(){
-        String user_id=CommitContent.isLogin(this);
-        Call<BaseResultModel<String>>call=HttpAdapter.getService().zhifubaoPay(user_id,id);
+    private void zhifubaoPay() {
+        String user_id = CommitContent.isLogin(this);
+        Call<BaseResultModel<String>> call = HttpAdapter.getService().zhifubaoPay(user_id, id);
         call.enqueue(new OnResponseNoDialogListener<BaseResultModel<String>>() {
             @Override
             protected void onSuccess(BaseResultModel<String> baseResultModel) {
-                LogUtils.D("baseResultModel--->"+baseResultModel.toString());
-                if (baseResultModel.getCode()==1){
-                    LogUtils.D("baseResultModel--->"+baseResultModel.getData().toString());
+                LogUtils.D("baseResultModel--->" + baseResultModel.toString());
+                if (baseResultModel.getCode() == 1) {
+                    LogUtils.D("baseResultModel--->" + baseResultModel.getData().toString());
                     pay(baseResultModel.getData());
                 }
             }
@@ -428,16 +424,17 @@ public class BookIntroductionActivity extends BaseActivity {
             }
         });
     }
+
     Dialog noLibDialog;
 
     public void noLibDialogShow(String msg) {
         noLibDialog = new Dialog(this, R.style.ActionSheetDialogStyle_NoAnimation);
         //填充对话框的布局
         View inflate = LayoutInflater.from(this).inflate(R.layout.dialog_no_get_lib, null);
-        Button sureBtn=(Button)inflate.findViewById(R.id.sure_pay_btn) ;
-        final Button cancelBtn=(Button)inflate.findViewById(R.id.no_pay_btn) ;
-        ImageView deleteIv=(ImageView)inflate.findViewById(R.id.my_lib_delete_iv);
-        TextView payInfoTv=(TextView)inflate.findViewById(R.id.pay_info_tv);
+        Button sureBtn = (Button) inflate.findViewById(R.id.sure_pay_btn);
+        final Button cancelBtn = (Button) inflate.findViewById(R.id.no_pay_btn);
+        ImageView deleteIv = (ImageView) inflate.findViewById(R.id.my_lib_delete_iv);
+        TextView payInfoTv = (TextView) inflate.findViewById(R.id.pay_info_tv);
         payInfoTv.setText(nullToSting(msg));
         deleteIv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -478,12 +475,6 @@ public class BookIntroductionActivity extends BaseActivity {
     }
 
 
-
-
-
-
-
-
     boolean isinitFileUrlBySPUtil = false;
 
     @OnClick({R.id.book_collection_iv, R.id.book_giv_thumb_iv, R.id.book_start_read_btn})
@@ -494,14 +485,14 @@ public class BookIntroductionActivity extends BaseActivity {
             case R.id.book_giv_thumb_iv:
                 break;
             case R.id.book_start_read_btn:
-                String user_id=null;
-                if ("0.00".equals(data.getCharge_value())){
-                    user_id=" ";
-                }else{
+                String user_id = null;
+                if ("0.00".equals(data.getCharge_value())) {
+                    user_id = " ";
+                } else {
                     user_id = CommitContent.isLogin(BookIntroductionActivity.this);
                 }
-                if (id!=null&&user_id!=null) {
-                    initFileUrl(id,user_id);
+                if (id != null && user_id != null) {
+                    initFileUrl(id, user_id);
                 }
 //                String cgs_id = (String) SPUtil.get(SPUtil.MY_PAY_CGS_ID, "");
 //                if (TextUtils.isEmpty(cgs_id)) {
@@ -536,6 +527,7 @@ public class BookIntroductionActivity extends BaseActivity {
         id = (String) getIntentKey1();
         LogUtils.D("id---->" + id);
     }
+
     /**
      * 初始化定位
      */
@@ -549,16 +541,16 @@ public class BookIntroductionActivity extends BaseActivity {
             @Override
             public void onLocationChanged(AMapLocation aMapLocation) {
                 if (aMapLocation != null) {
-                    LogUtils.i("aMapLocation",aMapLocation);
-                    LogUtils.i("aMapLocation.getErrorCode() ",aMapLocation.getErrorCode() );
+                    LogUtils.i("aMapLocation", aMapLocation);
+                    LogUtils.i("aMapLocation.getErrorCode() ", aMapLocation.getErrorCode());
                     if (aMapLocation.getErrorCode() == 0) {
                         String city = aMapLocation.getCity();
                         String province = aMapLocation.getProvince();
-                        initResourceDetail( id, province, city);
+                        initResourceDetail(id, province, city);
                     } else {
                         //定位失败
                         UtilToast.showText("定位失败");
-                        initResourceDetail( id, null, null);
+                        initResourceDetail(id, null, null);
                     }
                 }
             }
@@ -567,9 +559,9 @@ public class BookIntroductionActivity extends BaseActivity {
     }
 
     //获取资源详情页
-    private void initResourceDetail(String id,String province,String city) {
+    private void initResourceDetail(String id, String province, String city) {
         isResource = false;
-        Call<BaseResultModel<ResourceModel>> call = HttpAdapter.getService().getResourceDetail(id,province,city);
+        Call<BaseResultModel<ResourceModel>> call = HttpAdapter.getService().getResourceDetail(id, province, city);
         call.enqueue(new OnResponseListener<BaseResultModel<ResourceModel>>(this) {
             @Override
             protected void onSuccess(BaseResultModel<ResourceModel> model) {
@@ -615,7 +607,7 @@ public class BookIntroductionActivity extends BaseActivity {
         LogUtils.D("pic_url--->" + pic_url);
         UtilGlide.loadImg(this, pic_url, bookImageIv);
 //
-        bookPriceTv.setText(nullToSting(data.getCharge_value())+"元"); //设置费用
+        bookPriceTv.setText(nullToSting(data.getCharge_value()) + "元"); //设置费用
         bookSupplierTv.setText(data.getGys_name());//供应商
         float score = Float.parseFloat(data.getAvg_score());
         BigDecimal b = new BigDecimal(score * 2);

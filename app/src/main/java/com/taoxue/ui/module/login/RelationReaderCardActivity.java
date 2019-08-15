@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
@@ -156,7 +156,7 @@ public class RelationReaderCardActivity extends BaseActivity {
             @Override
             public void onSuccess(BaseModel baseModel) {
                 UserModel model=(UserModel) baseModel;
-                TaoXueApplication.get().setUserModel(model);
+                BaseApplication.get().setUserModel(model);
                 bindReaderCardIdByUserId(model.getUser_id(),readerCodeModel.getCgs_id());
             }
 

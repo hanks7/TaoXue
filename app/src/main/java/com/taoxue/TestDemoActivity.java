@@ -2,7 +2,7 @@ package com.taoxue;
 
 import android.os.Bundle;
 
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseNoDialogListener;
@@ -48,7 +48,7 @@ public class TestDemoActivity extends BaseActivity {
      * 加载更多
      */
     private void netMore() {
-        HttpAdapter.getService().read(TaoXueApplication.get().getUserModel().getUser_id(), page, pageSize)
+        HttpAdapter.getService().read(BaseApplication.get().getUserModel().getUser_id(), page, pageSize)
                 .enqueue(new OnResponseNoDialogListener<BasePageModel<ReadBean>>() {
                     @Override
                     protected void onSuccess(BasePageModel<ReadBean> basePageModel) {

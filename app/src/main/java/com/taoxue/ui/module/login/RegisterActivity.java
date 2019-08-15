@@ -2,11 +2,7 @@ package com.taoxue.ui.module.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -14,14 +10,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
 import com.taoxue.ui.model.BaseModel;
 import com.taoxue.ui.model.CheckSignModel;
 import com.taoxue.ui.model.UserModel;
-import com.taoxue.ui.model.YzmBean;
 import com.taoxue.ui.module.classification.CommitContent;
 import com.taoxue.ui.module.classification.HttpRequest;
 import com.taoxue.ui.view.TopBar;
@@ -121,7 +116,7 @@ public class RegisterActivity extends BaseActivity {
                                       @Override
                                       public void onSuccess(BaseModel baseModel) {
                                           UserModel userModel=(UserModel) baseModel;
-                                          TaoXueApplication.get().setUserModel(userModel);
+                                          BaseApplication.get().setUserModel(userModel);
                                           setResult();
                                       }
 

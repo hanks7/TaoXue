@@ -17,7 +17,7 @@ import com.jaiky.imagespickers.ImageLoader;
 import com.jaiky.imagespickers.ImageSelector;
 import com.jaiky.imagespickers.ImageSelectorActivity;
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
@@ -25,12 +25,10 @@ import com.taoxue.ui.model.BaseModel;
 import com.taoxue.ui.model.BaseResultModel;
 import com.taoxue.ui.model.UserModel;
 import com.taoxue.ui.module.classification.CommitContent;
-import com.taoxue.ui.module.login.LoginActivity;
 import com.taoxue.ui.view.roundedimageview.RoundedImageView;
 import com.taoxue.utils.UtilDate;
 import com.taoxue.utils.UtilIntent;
 import com.taoxue.utils.UtilTools;
-import com.taoxue.utils.Utildialog;
 import com.taoxue.utils.glide.UtilGlide;
 import com.taoxue.utils.permission.PermissionReq;
 import com.taoxue.utils.permission.PermissionResult;
@@ -75,7 +73,7 @@ public class MyInformationActivity extends BaseActivity {
         ButterKnife.bind(this);
         netWork();
         intTimePickerView();//选择时间
-        setViewData(TaoXueApplication.get().getUserModel());
+        setViewData(BaseApplication.get().getUserModel());
     }
 
     /**
@@ -201,13 +199,13 @@ public class MyInformationActivity extends BaseActivity {
                     protected void onSuccess(BaseResultModel<UserModel> resultModel) {
                         UserModel bean = resultModel.getData();
 
-                        UserModel userModel = TaoXueApplication.get().getUserModel();
+                        UserModel userModel = BaseApplication.get().getUserModel();
                         userModel.setBirth_year(bean.getBirth_year());
                         userModel.setName(bean.getName());
                         userModel.setEducation(bean.getEducation());
                         userModel.setJob(bean.getJob());
                         userModel.setPhoto(bean.getPhoto());
-                        TaoXueApplication.get().setUserModel(userModel);
+                        BaseApplication.get().setUserModel(userModel);
                         setViewData(bean);
                     }
                 });
@@ -219,7 +217,7 @@ public class MyInformationActivity extends BaseActivity {
     private void netWorkInforChange() {
 
         HttpAdapter.getService().updUserInfo(
-                TaoXueApplication.get().getUserModel().getUser_id(),
+                BaseApplication.get().getUserModel().getUser_id(),
                 tvSex.getText().toString().trim() + "",
                 tvBirthday.getText().toString().trim() + "",
                 tvIndustry.getText().toString().trim() + "",
@@ -245,7 +243,7 @@ public class MyInformationActivity extends BaseActivity {
         RequestBody fileBody = RequestBody.create(MediaType.parse("image/png"), new File(strPath));
 
         HttpAdapter.getService().uploadAndSavePhoto(
-                TaoXueApplication.get().getUserModel().getUser_id(),
+                BaseApplication.get().getUserModel().getUser_id(),
                 fileBody
         ).enqueue(new OnResponseListener<BaseResultModel>(this) {
             @Override

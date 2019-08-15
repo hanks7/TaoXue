@@ -14,7 +14,7 @@ import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.utils.glide.UtilGlide;
 
 import java.io.File;
@@ -30,7 +30,7 @@ public class ImageLoaderUtil {
     @Deprecated
     public static void displayImage(String uri, ImageView imageView) {
 
-        UtilGlide.loadImg(TaoXueApplication.get().getApplicationContext(),uri,imageView);
+        UtilGlide.loadImg(BaseApplication.get().getApplicationContext(),uri,imageView);
 //        if (TextUtils.isEmpty(uri)) {
 //            uri = "";
 //        }
@@ -42,7 +42,7 @@ public class ImageLoaderUtil {
     @Deprecated
     public static void displayPhotoImage(String uri, ImageView imageView) {
 
-        UtilGlide.loadImg(TaoXueApplication.get().getApplicationContext(),uri,imageView);
+        UtilGlide.loadImg(BaseApplication.get().getApplicationContext(),uri,imageView);
 //        if (TextUtils.isEmpty(uri)) {
 //            uri = "";
 //        }

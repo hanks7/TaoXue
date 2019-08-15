@@ -68,8 +68,8 @@ import java.io.File;
  * ******************************************
  */
 
-public class TaoXueApplication extends MultiDexApplication {
-    private static TaoXueApplication app;
+public class BaseApplication extends MultiDexApplication {
+    private static BaseApplication app;
     private UserModel userModel;
     private SharedPreferences sp;
     private boolean islogin;
@@ -116,7 +116,7 @@ public class TaoXueApplication extends MultiDexApplication {
         DisplayUtil.screenHightDip = DisplayUtil.px2dip(getApplicationContext(), dm.heightPixels);
     }
 
-    public static TaoXueApplication get() {
+    public static BaseApplication get() {
         return app;
     }
 

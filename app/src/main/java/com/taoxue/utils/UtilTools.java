@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.danikula.videocache.HttpProxyCacheServer;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.ui.module.login.LoginActivity;
 
 import static com.taoxue.app.Constants.FORMAL_URL;
@@ -27,7 +27,7 @@ import static com.taoxue.app.Constants.FORMAL_URL;
  */
 
 public class UtilTools {
-    public static Context context = TaoXueApplication.get();
+    public static Context context = BaseApplication.get();
 
     /**
      * 如果没登录直接跳转到登录界面
@@ -35,10 +35,10 @@ public class UtilTools {
      * @return
      */
     public static boolean judgeIsLogin(Activity activity) {
-        if (!TaoXueApplication.get().isLogin()) {
+        if (!BaseApplication.get().isLogin()) {
             UtilIntent.intentDIYLeftToRight(activity, LoginActivity.class);
         }
-        return TaoXueApplication.get().isLogin();
+        return BaseApplication.get().isLogin();
     }
 
     public static String getResourcesString(int id) {
@@ -139,7 +139,7 @@ public class UtilTools {
      * @return
      */
     public static  String getProxyUrl(String url) {
-        HttpProxyCacheServer proxy = TaoXueApplication.getProxy();
+        HttpProxyCacheServer proxy = BaseApplication.getProxy();
         LogUtils.i("url",url);
         return proxy.getProxyUrl(url);
     }

@@ -2,10 +2,8 @@ package com.taoxue.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
-import com.google.gson.Gson;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -35,7 +33,7 @@ public class SPUtil {
      */
     public static void put( String key, Object object) {
 
-        SharedPreferences sp = TaoXueApplication.get().getSharedPreferences(FILE_NAME,
+        SharedPreferences sp = BaseApplication.get().getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
 
@@ -66,7 +64,7 @@ public class SPUtil {
      */
     public static Object get( String key, Object defaultObject) {
         try {
-            SharedPreferences sp = TaoXueApplication.get().getSharedPreferences(FILE_NAME,
+            SharedPreferences sp = BaseApplication.get().getSharedPreferences(FILE_NAME,
                     Context.MODE_PRIVATE);
             if (defaultObject instanceof String) {
                 return sp.getString(key, (String) defaultObject);

@@ -12,7 +12,7 @@ import java.io.File;
 
 public class AppConfig {
     public static String getAppCachePath() {
-        String path = TaoXueApplication.get().getCacheDir() + "/"+ InternalCacheDiskCacheFactory.DEFAULT_DISK_CACHE_DIR;
+        String path = BaseApplication.get().getCacheDir() + "/"+ InternalCacheDiskCacheFactory.DEFAULT_DISK_CACHE_DIR;
 //        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/taoxue/cache";
         File file = new File(path);
         if (!file.exists()) {

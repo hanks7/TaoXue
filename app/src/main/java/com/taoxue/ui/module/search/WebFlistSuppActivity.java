@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.webkit.JavascriptInterface;
 
 import com.taoxue.app.Constants;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.ui.module.yuejia.ResourceDetailActivity;
 import com.taoxue.utils.LogUtils;
 
@@ -22,7 +22,7 @@ public class WebFlistSuppActivity extends WebBaseActivity {
         String name = bundle.getString("name");
 
         topBar.setTitle(name);
-        mWebView.loadUrl(Constants.WEB_SUPPLIER_FLLIST_URL + "?id=" + gys_id + "&dr_data_id=" + dr_data_id + "&user_id=" + TaoXueApplication.get().getUserId());
+        mWebView.loadUrl(Constants.WEB_SUPPLIER_FLLIST_URL + "?id=" + gys_id + "&dr_data_id=" + dr_data_id + "&user_id=" + BaseApplication.get().getUserId());
     }
 
     /**

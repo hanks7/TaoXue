@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.ui.module.classification.CommitContent;
 import com.taoxue.ui.module.login.LoginActivity;
@@ -125,7 +125,7 @@ public class SettingActivity extends BaseActivity {
                 Utildialog.show(this, "退出登录将删除用户信息,确认退出登录吗?", new Runnable() {
                     @Override
                     public void run() {
-                        TaoXueApplication.get().quitLogin();
+                        BaseApplication.get().quitLogin();
                         launch(LoginActivity.class);
                         finish();
                     }

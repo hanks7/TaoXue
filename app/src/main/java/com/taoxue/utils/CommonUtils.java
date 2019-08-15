@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.taoxue.BuildConfig;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -66,7 +66,7 @@ public class CommonUtils {
      * @param activity
      */
     public static void hideKeyboard(Activity activity) {
-        ((InputMethodManager) TaoXueApplication.get().getSystemService(TaoXueApplication.get().INPUT_METHOD_SERVICE))
+        ((InputMethodManager) BaseApplication.get().getSystemService(BaseApplication.get().INPUT_METHOD_SERVICE))
                 .hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
@@ -76,7 +76,7 @@ public class CommonUtils {
      * @param view
      */
     public static void showKeyboard(View view) {
-        ((InputMethodManager) TaoXueApplication.get().getSystemService(TaoXueApplication.get().INPUT_METHOD_SERVICE))
+        ((InputMethodManager) BaseApplication.get().getSystemService(BaseApplication.get().INPUT_METHOD_SERVICE))
                 .showSoftInput(view, InputMethodManager.SHOW_FORCED);
     }
 
@@ -212,7 +212,7 @@ public class CommonUtils {
 
 
     public static int[] getViewSize(int layoutId) {
-        LayoutInflater inflater = (LayoutInflater) TaoXueApplication.get()
+        LayoutInflater inflater = (LayoutInflater) BaseApplication.get()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(layoutId, null);
         return getViewSize(view);
@@ -452,7 +452,7 @@ public class CommonUtils {
 
 
     public static int[] getTelephoneInfo() {
-        TelephonyManager mTelephonyManager = (TelephonyManager) TaoXueApplication.get().getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager mTelephonyManager = (TelephonyManager) BaseApplication.get().getSystemService(Context.TELEPHONY_SERVICE);
 
         String imsi = mTelephonyManager.getSubscriberId();
         int[] infos = new int[2];

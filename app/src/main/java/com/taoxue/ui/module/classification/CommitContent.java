@@ -16,7 +16,7 @@ import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrPosition;
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.ui.module.login.LoginActivity;
 import com.taoxue.utils.LogUtils;
@@ -28,8 +28,8 @@ import com.taoxue.utils.LogUtils;
 public class CommitContent {
     //判断是否登录  登录 返回  user_id
     public static String isLogin(Context context) {
-        if (TaoXueApplication.get().isLogin()) {
-            return TaoXueApplication.get().getUserModel().getUser_id();
+        if (BaseApplication.get().isLogin()) {
+            return BaseApplication.get().getUserModel().getUser_id();
         } else {
             if (context instanceof BaseActivity) {
                 ((BaseActivity) context).showToast("请先登录");

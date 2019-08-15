@@ -3,8 +3,8 @@ package com.taoxue.ui.module.search;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
 
+import com.taoxue.app.BaseApplication;
 import com.taoxue.app.Constants;
-import com.taoxue.app.TaoXueApplication;
 import com.taoxue.ui.module.home.NormalListViewActivity;
 import com.taoxue.ui.module.yuejia.ResourceDetailActivity;
 import com.taoxue.utils.LogUtils;
@@ -19,7 +19,7 @@ public class WebLibHomeActivity extends WebBaseHomeActivity {
         super.onCreate(savedInstanceState);
 
         String cgs_id = (String) getIntentKey1();
-        String user_id = TaoXueApplication.get().getUserModel().getUser_id();
+        String user_id = BaseApplication.get().getUserModel().getUser_id();
         mWebView.loadUrl(Constants.WEB_LIBRARY_URL + "&id=" + cgs_id + "&user_id=" + user_id);
     }
 

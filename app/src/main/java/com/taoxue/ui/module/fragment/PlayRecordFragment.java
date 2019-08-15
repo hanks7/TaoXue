@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseListFragment;
 import com.taoxue.base.BaseRecyclerAdapter;
 import com.taoxue.base.BaseViewHolder;
@@ -31,7 +31,7 @@ public class PlayRecordFragment extends BaseListFragment<PlayRecordFragment.Exam
 
     @Override
     protected void loadData(int page, int pageSize) {
-        getServer().read(TaoXueApplication.get().getUserModel().getUser_id(), page, pageSize)
+        getServer().read(BaseApplication.get().getUserModel().getUser_id(), page, pageSize)
                 .enqueue(new OnRefreshListResponseListener<ReadBean>(getActivity(),
                         getRecyclerView(), getPageInfoModel()));
     }

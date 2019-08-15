@@ -1,6 +1,6 @@
 package com.taoxue.utils;
 
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -14,13 +14,13 @@ import java.io.InputStream;
 
 public class AppUtils {
     public static void showToast(String msg) {
-//        Toast.makeText(TaoXueApplication.get(), msg, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(BaseApplication.get(), msg, Toast.LENGTH_SHORT).show();
         UtilToast.showText(msg);
     }
 
     public static void showToast(int resId) {
-//        Toast.makeText(TaoXueApplication.get(), TaoXueApplication.get().getString(resId), Toast.LENGTH_SHORT).show();
-        UtilToast.showText(TaoXueApplication.get().getString(resId));
+//        Toast.makeText(BaseApplication.get(), BaseApplication.get().getString(resId), Toast.LENGTH_SHORT).show();
+        UtilToast.showText(BaseApplication.get().getString(resId));
     }
 
     public static byte[] getFileToByte(File file) {

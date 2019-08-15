@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseFragment;
 import com.taoxue.ui.model.UserModel;
 import com.taoxue.ui.module.home.BuyingResourceActivity;
@@ -63,8 +63,8 @@ public class MineFragment extends BaseFragment {
 
     private void setData() {
 
-        if (TaoXueApplication.get().isLogin()) {
-            bean = TaoXueApplication.get().getUserModel();
+        if (BaseApplication.get().isLogin()) {
+            bean = BaseApplication.get().getUserModel();
             mTvName.setText(bean.getName() + "");
             UtilGlide.loadImgForIvHead(getActivity(), bean.getPhoto(), mIvHead);
         } else {

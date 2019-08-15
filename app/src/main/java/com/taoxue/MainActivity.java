@@ -13,7 +13,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.base.BaseFragment;
 import com.taoxue.ui.module.classification.ClassificationFragment;
@@ -70,9 +70,6 @@ public class MainActivity extends BaseActivity {
         update();//检查更新
 //        attemptToBindService();//注册音频Service
     }
-
-
-
 
     /**
      * 提示更新
@@ -245,7 +242,7 @@ public class MainActivity extends BaseActivity {
             LogUtils.D("service 链接了");
             if (mAudioManager != null) {
                 mBound = true;
-                TaoXueApplication.audioManager = mAudioManager;
+                BaseApplication.audioManager = mAudioManager;
                 LogUtils.D("mAudioManager---->" + mAudioManager);
             }
         }

@@ -110,7 +110,7 @@ public class AudioPlayActivity extends BaseActivity {
 
         utilshare=new Utilshare(this);
         attemptToBindService();
-//        mAudioManager= TaoXueApplication.audioManager;
+//        mAudioManager= BaseApplication.audioManager;
         LogUtils.D("mAudioManager---->"+mAudioManager);
 
     }
@@ -147,7 +147,7 @@ public class AudioPlayActivity extends BaseActivity {
             if (mAudioManager != null) {
                 mBound = true;
                 getIntentData();
-//                TaoXueApplication.audioManager = mAudioManager;
+//                BaseApplication.audioManager = mAudioManager;
 //                LogUtils.D("mAudioManager---->" + mAudioManager);
             }
         }

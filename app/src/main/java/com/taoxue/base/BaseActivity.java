@@ -92,7 +92,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         MobclickAgent.onResume(this);
-        Log.i(Ulog.TAG + "ui页面", "(" + getClass().getSimpleName() + ".java:0)");
+        Log.i(Ulog.TAG + "activity", "(" + getClass().getSimpleName() + ".java:0)");
         super.onResume();
     }
 

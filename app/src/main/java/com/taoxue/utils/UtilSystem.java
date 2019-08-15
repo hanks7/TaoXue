@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.utils.permission.PermissionReq;
 
 import java.net.InetAddress;
@@ -31,12 +31,12 @@ public class UtilSystem {
 
     //版本名
     public static String getVersionName() {
-        return getPackageInfo(TaoXueApplication.get()).versionName;
+        return getPackageInfo(BaseApplication.get()).versionName;
     }
 
     //版本号
     public static int getVersionCode() {
-        return getPackageInfo(TaoXueApplication.get()).versionCode;
+        return getPackageInfo(BaseApplication.get()).versionCode;
     }
 
     private static PackageInfo getPackageInfo(Context context) {
@@ -229,9 +229,9 @@ public class UtilSystem {
      * 获取本机IMSI
      */
     public static String getIMSI() {
-        if(!PermissionReq.judgePermisson2(TaoXueApplication.get().getApplicationContext(), Manifest.permission.READ_PHONE_STATE))
+        if(!PermissionReq.judgePermisson2(BaseApplication.get().getApplicationContext(), Manifest.permission.READ_PHONE_STATE))
             return "";
-        TelephonyManager telephonyManager = (TelephonyManager) TaoXueApplication.get().getApplicationContext()
+        TelephonyManager telephonyManager = (TelephonyManager) BaseApplication.get().getApplicationContext()
                 .getSystemService(Context.TELEPHONY_SERVICE);
         return telephonyManager.getDeviceId();
     }

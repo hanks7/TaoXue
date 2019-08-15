@@ -1,11 +1,12 @@
 package com.taoxue.http;
 
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.http.gson.GsonConverterFactory;
 import com.taoxue.utils.LogUtils;
 import com.taoxue.utils.UtilSystem;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -26,12 +27,15 @@ public class HttpAdapter {
 
     private static HttpApis service;
 
-    private static OkHttpClient client = new OkHttpClient();
+    private static OkHttpClient client;
 
     public static void init() {
 
-        client = client.newBuilder()
+        client = new OkHttpClient().newBuilder()
                 .addNetworkInterceptor(new HttpInterceptor())
+                //处理多BaseUrl,添加应用拦截器
+                .readTimeout(1, TimeUnit.SECONDS)
+                .connectTimeout(1, TimeUnit.SECONDS)
                 .addInterceptor
                         (new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build();
@@ -61,7 +65,7 @@ public class HttpAdapter {
             HttpUrl httpUrl = request.url()
                     .newBuilder()
                     .addQueryParameter("IMEI", UtilSystem.getIMSI())
-                    .addQueryParameter("user_id", TaoXueApplication.get().getUserModel().getUser_id()==null||TaoXueApplication.get().getUserModel().getUser_id().equals("null") ? "" : TaoXueApplication.get().getUserModel().getUser_id())
+                    .addQueryParameter("user_id", BaseApplication.get().getUserModel().getUser_id() == null || BaseApplication.get().getUserModel().getUser_id().equals("null") ? "" : BaseApplication.get().getUserModel().getUser_id())
                     .build();
 
             Request build = request.newBuilder()
@@ -71,7 +75,7 @@ public class HttpAdapter {
             Response response = chain.proceed(build);
 
 //            if (!url.contains("api/User")) {
-//                request = request.newBuilder().addHeader("clientId", "bTVvVFZCMVpTYTRnZFppbTlPTFlHOVBu").addHeader("tokenId", TaoXueApplication.get().getTokenId()).build();
+//                request = request.newBuilder().addHeader("clientId", "bTVvVFZCMVpTYTRnZFppbTlPTFlHOVBu").addHeader("tokenId", BaseApplication.get().getTokenId()).build();
 //            }
             LogUtils.i("http_url", response.request().url());
             return response;

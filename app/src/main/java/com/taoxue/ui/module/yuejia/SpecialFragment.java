@@ -13,10 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.taoxue.R;
-import com.taoxue.app.TaoXueApplication;
+import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseFragment;
 import com.taoxue.ui.view.TopBar;
-import com.taoxue.utils.LogUtils;
 import com.taoxue.utils.UtilDate;
 
 import java.util.ArrayList;
@@ -81,8 +80,8 @@ public class SpecialFragment extends BaseFragment {
 
    public void updateView(){
        String name;
-       if (TaoXueApplication.get().getUserModel()!=null&&!TaoXueApplication.get().getUserModel().equals("")){
-           name= TaoXueApplication.get().getUserModel().getName()==null?"游客":TaoXueApplication.get().getUserModel().getName();
+       if (BaseApplication.get().getUserModel()!=null&&!BaseApplication.get().getUserModel().equals("")){
+           name= BaseApplication.get().getUserModel().getName()==null?"游客":BaseApplication.get().getUserModel().getName();
        }else{
           name="游客";
        }

@@ -38,6 +38,7 @@ import com.taoxue.ui.view.TranslucentActionBar;
 import com.taoxue.ui.view.TranslucentScrollView;
 import com.taoxue.ui.view.UPMarqueeView;
 import com.taoxue.ui.view.refresh.MyRefreshLayout;
+import com.taoxue.utils.UtilGson;
 import com.taoxue.utils.UtilIntent;
 import com.taoxue.utils.UtilToast;
 import com.taoxue.utils.banner.BannerHelp;
@@ -129,6 +130,7 @@ public class HomeFragment extends BaseFragment {
         initLocation();
         initRefreshLayout();
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event(MessageEvent messageEvent) {
         //设置默认滚动到顶部
@@ -179,9 +181,9 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public void onUIPositionChange(PtrFrameLayout frame, boolean isUnderTouch, byte status, PtrIndicator ptrIndicator) {
-                if(status==1){
+                if (status == 1) {
                     mActionbar.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     mActionbar.setVisibility(View.GONE);
                 }
 
@@ -244,6 +246,7 @@ public class HomeFragment extends BaseFragment {
         });
 
     }
+
     /**
      * 中间四张图片的点击事件
      *
@@ -415,10 +418,6 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    public void tagIntent(String keyWord, Class<?> classes) {
-        launch(classes, keyWord);
-    }
-
 
     public class AdapterViewOnitmClickListener implements AdapterView.OnItemClickListener {
         List<ApiOneBean.BdqdBean> list;
@@ -443,15 +442,18 @@ public class HomeFragment extends BaseFragment {
     private void netWork() {
         HttpAdapter.getService().getHome1().enqueue(new OnResponseListener<BaseResultModel<ApiOneBean>>(getActivity()) {
             @Override
-            protected void onSuccess(BaseResultModel<ApiOneBean> resultModel) {
+            protected void onSuccess(BaseResultModel<ApiOneBean> bean) {
                 refreshLayout.refreshComplete();
-                ApiOneBean bean = resultModel.getData();
-                initData(bean);
+                initData(bean.getData());
             }
 
             @Override
             protected void onRequestFailure() {
                 refreshLayout.refreshComplete();
+                String json = UtilGson.getJson(getContext(), "ApiOneBean.json");
+                ApiOneBean bean = UtilGson.toBean(json, ApiOneBean.class);
+                initData(bean);
+
             }
         });
     }
