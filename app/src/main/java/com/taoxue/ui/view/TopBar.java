@@ -1,9 +1,8 @@
 package com.taoxue.ui.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.util.AttributeSet;
@@ -14,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.taoxue.R;
-import com.taoxue.utils.StatusBarCompat;
+import com.taoxue.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -127,8 +126,9 @@ public class TopBar extends RelativeLayout {
      * 启用 透明状态栏(重写此方法可以取消透明)
      */
     protected void setOnTranslucent(boolean translucent) {
-        if(translucent){
-            setPadding(0, StatusBarCompat.getStatusBarHeight((Activity)getContext()),0,0);
+        if (translucent && getContext() instanceof BaseActivity && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            int resourceId = getContext().getResources().getIdentifier("status_bar_height", "dimen", "android");
+            setPadding(0, getContext().getResources().getDimensionPixelSize(resourceId), 0, 0);
         }
     }
 

@@ -100,16 +100,6 @@ public class ResourceDetailActivity extends BaseActivity {
 
         onClickdo();
 
-        mSv.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
-
-                mTopbar.setNeedTranslucent(getTransAlpha());
-
-            }
-        });
-
-
     }
     //渐变开始位置
     private int transStartY = 50;

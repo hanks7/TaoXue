@@ -16,7 +16,7 @@ import com.taoxue.utils.permission.PermissionReq;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.taoxue.utils.StatusbarUtils.enableTranslucentStatusbar;
+import static com.taoxue.utils.UtilStatusbar.enableTranslucentStatusbar;
 
 /**
  * Created by Administrator on 2016/11/19.

@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
  * Email: lichenwei.me@foxmail.com
  */
 
-public class StatusbarUtils {
+public class UtilStatusbar {
     /**
      * 获取状态栏高度
      *
@@ -38,29 +38,13 @@ public class StatusbarUtils {
         return result;
     }
 
-    /**
-     * 启用 透明状态栏(半透明)
-     *
-     * @param activity
-     */
-    public static void enableTranslucentStatusbar2(Activity activity) {
-
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = activity.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
-    }
 
     /**
-     * 启用 透明状态栏 (全透明)
+     * 启用 透明状态栏 (全透明)  //  在setContentView(R.layout.ui_play);之前调用(重要)
      *
      * @param activity
      */
     public static void enableTranslucentStatusbar(Activity activity) {
-
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = activity.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -69,6 +53,19 @@ public class StatusbarUtils {
                 window.setStatusBarColor(Color.TRANSPARENT);
             }
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        }
+    }
+
+    /**
+     * 启用 透明状态栏(半透明) //  在setContentView(R.layout.ui_play);之前调用(重要)
+     *
+     * @param activity
+     */
+    public static void enableTranslucentStatusbar2(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = activity.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
     }
 

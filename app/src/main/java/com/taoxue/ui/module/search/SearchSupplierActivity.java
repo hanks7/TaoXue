@@ -31,7 +31,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.taoxue.utils.StatusbarUtils.StatusBarLightMode;
+import static com.taoxue.utils.UtilStatusbar.StatusBarLightMode;
 
 /**
  * 搜索供应商

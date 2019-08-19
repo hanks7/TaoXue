@@ -28,7 +28,7 @@ import butterknife.OnClick;
 import co.lujun.androidtagview.TagContainerLayout;
 import co.lujun.androidtagview.TagView;
 
-import static com.taoxue.utils.StatusbarUtils.StatusBarLightMode;
+import static com.taoxue.utils.UtilStatusbar.StatusBarLightMode;
 
 /**
  * Created by User on 2017/4/1.

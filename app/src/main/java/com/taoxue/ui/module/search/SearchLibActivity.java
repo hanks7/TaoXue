@@ -39,7 +39,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.taoxue.R.id.tv_located_city;
-import static com.taoxue.utils.StatusbarUtils.StatusBarLightMode;
+import static com.taoxue.utils.UtilStatusbar.StatusBarLightMode;
 
 /**
  * 图书馆搜索

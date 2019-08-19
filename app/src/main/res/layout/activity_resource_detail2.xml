@@ -198,7 +198,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/divder_line_pinglun"
-                tools:layout_editor_absoluteX="8dp"></android.support.v7.widget.RecyclerView>
+                tools:layout_editor_absoluteX="8dp"/>
 
             <View
                 android:id="@+id/divder_tuijian"
@@ -243,7 +243,7 @@
                 android:id="@+id/rv_tuijian_info"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/divder_line_tuijian"></android.support.v7.widget.RecyclerView>
+                app:layout_constraintTop_toBottomOf="@+id/divder_line_tuijian"/>
 
             <View
                 android:id="@+id/divder_lin"

@@ -23,7 +23,7 @@ public class StatusBarCompat {
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
             result = context.getResources().getDimensionPixelSize(resourceId);
-            StatusbarUtils.enableTranslucentStatusbar(context);
+            UtilStatusbar.enableTranslucentStatusbar(context);
         }
         return result;
     }

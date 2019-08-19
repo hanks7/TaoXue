@@ -20,7 +20,7 @@ import com.taoxue.utils.UtilIntent;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.taoxue.utils.StatusbarUtils.enableTranslucentStatusbar;
+import static com.taoxue.utils.UtilStatusbar.enableTranslucentStatusbar;
 
 /**
  * Created by Administrator on 2016/11/22.

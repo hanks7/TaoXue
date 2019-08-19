@@ -14,6 +14,7 @@ import android.util.Log;
 import com.taoxue.app.DialogInterface;
 import com.taoxue.ui.module.classification.MessageEvent;
 import com.taoxue.utils.LogUtils;
+import com.taoxue.utils.UtilStatusbar;
 import com.taoxue.utils.Ulog;
 import com.taoxue.utils.UtilIntent;
 import com.taoxue.utils.UtilToast;
@@ -43,6 +44,7 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setOnTranslucent();
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//强制竖屏
         EventBus.getDefault().register(this);
@@ -50,7 +52,12 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface {
         mActivity = this;
         initDialog();
     }
-
+    /**
+     * 启用 透明状态栏(重写此方法可以取消透明)
+     */
+    protected void setOnTranslucent() {
+        UtilStatusbar.enableTranslucentStatusbar(this);
+    }
 
     @Override
     public void onContentChanged() {
