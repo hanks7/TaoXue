@@ -574,10 +574,7 @@ public class BookIntroductionActivity extends BaseActivity {
                 }
             }
 
-            @Override
-            protected void onFailure(String msg) {
-                super.onFailure(msg);
-            }
+
         });
     }
 

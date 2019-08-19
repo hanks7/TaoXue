@@ -22,7 +22,7 @@ public class LibKUFragment extends BaseListNoTopBarFragment<LibKUFragment.Exampl
     @Override
     protected void loadData(int page, int pageSize) {
         getServer().getCgsDrdatafasdfasdf(pageSize, page, getArguments().getString("ids"))
-                .enqueue(new OnRefreshListResponseListener<GysDrResultBean>(getActivity(), getRecyclerView(), getPageInfoModel()));
+                .enqueue(new OnRefreshListResponseListener<GysDrResultBean>((BaseActivity) getActivity(), getRecyclerView(), getPageInfoModel()));
     }
 
     @Override

@@ -1,9 +1,9 @@
 package com.taoxue.ui.module.classification;
 
-import android.content.Context;
 import android.widget.ImageView;
 
 import com.taoxue.R;
+import com.taoxue.app.DialogInterface;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
@@ -18,7 +18,6 @@ import com.taoxue.ui.model.ResourceLibModel;
 import com.taoxue.ui.model.ResourcePraiseBean;
 import com.taoxue.ui.model.StateBean;
 import com.taoxue.ui.model.UserModel;
-import com.taoxue.ui.model.YzmBean;
 import com.taoxue.utils.LogUtils;
 import com.taoxue.utils.UtilToast;
 
@@ -37,33 +36,33 @@ public class HttpRequest {
         call.enqueue(new OnResponseNoDialogListener<BaseResultModel<StateBean>>() {
             @Override
             protected void onSuccess(BaseResultModel<StateBean> model) {
-                if (model.getCode()==1){
-                    if (model.getData().getFlag_code().equals("1")){//收藏成功
-                      iv.setImageResource(R.mipmap.icon_collection_true);
-                    }else if (model.getData().getFlag_code().equals("0")){//收藏失败
-                       iv.setImageResource(R.mipmap.uncollection);
+                if (model.getCode() == 1) {
+                    if (model.getData().getFlag_code().equals("1")) {//收藏成功
+                        iv.setImageResource(R.mipmap.icon_collection_true);
+                    } else if (model.getData().getFlag_code().equals("0")) {//收藏失败
+                        iv.setImageResource(R.mipmap.uncollection);
                     }
-                   callBack.onSuccess(model.getData());
-                }else{
-                 UtilToast.showText(model.getMsg());
+                    callBack.onSuccess(model.getData());
+                } else {
+                    UtilToast.showText(model.getMsg());
                 }
             }
         });
     }
 
     //点击后点赞
-    public static void giveThumbs(String resource_id, String gys_id,final ImageView iv, final StateCallBack callBack) {
-        HttpAdapter.getService().giveThumb(resource_id,gys_id).enqueue(new OnResponseNoDialogListener<BaseResultModel<StateBean>>() {
+    public static void giveThumbs(String resource_id, String gys_id, final ImageView iv, final StateCallBack callBack) {
+        HttpAdapter.getService().giveThumb(resource_id, gys_id).enqueue(new OnResponseNoDialogListener<BaseResultModel<StateBean>>() {
             @Override
             protected void onSuccess(BaseResultModel<StateBean> model) {
-                if (model.getCode()==1){
-                    if (model.getData().getFlag_code().equals("1")){//点赞成功
+                if (model.getCode() == 1) {
+                    if (model.getData().getFlag_code().equals("1")) {//点赞成功
                         iv.setImageResource(R.mipmap.icon_praise_true);
-                    }else if (model.getData().getFlag_code().equals("0")){//取消点赞
+                    } else if (model.getData().getFlag_code().equals("0")) {//取消点赞
                         iv.setImageResource(R.mipmap.give_thumb);
                     }
                     callBack.onSuccess(model.getData());
-                }else{
+                } else {
                     UtilToast.showText(model.getMsg());
                 }
             }
@@ -128,7 +127,7 @@ public class HttpRequest {
     //添加评论内容
 
     public static void addCommitContent(String resource_id, String comment, String score, final RequestCallBack callBack) {
-        Call<CheckSignModel> call = HttpAdapter.getService().addResourceComment(resource_id, comment, score,"0");
+        Call<CheckSignModel> call = HttpAdapter.getService().addResourceComment(resource_id, comment, score, "0");
         call.enqueue(new OnResponseNoDialogListener<CheckSignModel>() {
             @Override
             protected void onSuccess(CheckSignModel checkSignModel) {
@@ -148,15 +147,17 @@ public class HttpRequest {
     public interface RequestSuccessCallBack {
         void onSuccess(String msg);//表示请求成功
     }
-  public  interface StateCallBack{
-      void onSuccess(StateBean msg);//表示请求成功
-  }
+
+    public interface StateCallBack {
+        void onSuccess(StateBean msg);//表示请求成功
+    }
 
 
     public interface RequestCallBack {
         void onSuccess(String msg);//表示请求成功
 
         void onRequested(String msg); //表示已经请求了
+
         void onUnSuccess(String msg);//表示评论失败
 
     }
@@ -215,29 +216,31 @@ public class HttpRequest {
     }
 
     //发送手机验证码
-    public static void sendMobileCode(String phone, Context context, final RequestResultCallBack callBack) {
+    public static void sendMobileCode(String phone, DialogInterface context, final RequestResultCallBack callBack) {
         Call<CheckSignModel> call = HttpAdapter.getService().sendvalidate(phone);
         call.enqueue(new OnResponseListener<CheckSignModel>(context) {
             @Override
             protected void onSuccess(CheckSignModel baseResultModel) {
                 if (baseResultModel.getCode() == 1) {
-                    callBack.onSuccess("",baseResultModel);
+                    callBack.onSuccess("", baseResultModel);
                 } else {
                     callBack.onFailure(baseResultModel.getMsg());
                 }
             }
 
             @Override
-            protected void onFailure(String msg) {
+            protected void onError(int code, String msg) {
                 callBack.onFailure(msg);
             }
+
+
         });
 
 
     }
 
     //查询资源库详情
-    public static void queryResourceLibDetail(Context context, final RequestBaseModelCallBack callBack) {
+    public static void queryResourceLibDetail(BaseActivity context, final RequestBaseModelCallBack callBack) {
         Call<BaseResultModel<ResourceLibModel>> call = HttpAdapter.getService().searchResourceDeatail();
         call.enqueue(new OnResponseListener<BaseResultModel<ResourceLibModel>>(context) {
             @Override
@@ -273,14 +276,15 @@ public class HttpRequest {
             }
         });
     }
+
     //检查验证码接口
-    public static  void  UserRegister(String mobile, String pw, final RequestBaseModelCallBack callBack){
-        HttpAdapter.getService().saveRegister(mobile,pw).enqueue(new OnResponseNoDialogListener<BaseResultModel<UserModel>>() {
+    public static void UserRegister(String mobile, String pw, final RequestBaseModelCallBack callBack) {
+        HttpAdapter.getService().saveRegister(mobile, pw).enqueue(new OnResponseNoDialogListener<BaseResultModel<UserModel>>() {
             @Override
             protected void onSuccess(BaseResultModel<UserModel> checkSignModel) {
-                if (checkSignModel.getCode()==1){
+                if (checkSignModel.getCode() == 1) {
                     callBack.onSuccess(checkSignModel.getData());
-                }else {
+                } else {
                     UtilToast.showText(checkSignModel.getMsg());
                 }
             }
@@ -289,19 +293,18 @@ public class HttpRequest {
     }
 
 
-
-   //检查验证码接口
-    public static  void  checkMESCode(String mobile, String code, final CheckResultCallBack callBack){
-         HttpAdapter.getService().checkSMSCode(mobile,code).enqueue(new OnResponseNoDialogListener<CheckSignModel>() {
-             @Override
-             protected void onSuccess(CheckSignModel checkSignModel) {
-                 if (checkSignModel.getCode()==1){
-                   callBack.onSuccess();
-                 }else {
-                     UtilToast.showText(checkSignModel.getMsg());
-                 }
-             }
-         });
+    //检查验证码接口
+    public static void checkMESCode(String mobile, String code, final CheckResultCallBack callBack) {
+        HttpAdapter.getService().checkSMSCode(mobile, code).enqueue(new OnResponseNoDialogListener<CheckSignModel>() {
+            @Override
+            protected void onSuccess(CheckSignModel checkSignModel) {
+                if (checkSignModel.getCode() == 1) {
+                    callBack.onSuccess();
+                } else {
+                    UtilToast.showText(checkSignModel.getMsg());
+                }
+            }
+        });
 
     }
 
@@ -310,7 +313,7 @@ public class HttpRequest {
      *
      * @param
      */
-    public static void initReaderCodeByUser(Context context, String reader_id, String reader_name) {
+    public static void initReaderCodeByUser(BaseActivity context, String reader_id, String reader_name) {
         Call<BaseResultModel<ReaderCodeModel>> call = HttpAdapter.getService().testReaderCode(reader_id, reader_name);
         call.enqueue(new OnResponseListener<BaseResultModel<ReaderCodeModel>>(context) {
             @Override

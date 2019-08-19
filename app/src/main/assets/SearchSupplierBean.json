@@ -1,0 +1,31 @@
+{
+  "code": 1,
+  "item": [
+    {
+      "ids": "11",
+      "index": "guojiatushuguanshaoerguan",
+      "name": "国家图书馆少儿馆"
+    },
+    {
+      "ids": "12",
+      "index": "kaiwentushuguanshaoerguan",
+      "name": "凯文图书馆少儿馆"
+    },
+    {
+      "ids": "13",
+      "index": "dongbeitushuguanshaoerguan",
+      "name": "东北图书馆少儿馆"
+    },
+    {
+      "ids": "14",
+      "index": "anhuitushuguanshaoerguan",
+      "name": "安徽图书馆少儿馆"
+    },
+    {
+      "ids": "15",
+      "index": "jilintushuguanshaoerguan",
+      "name": "吉林图书馆少儿馆"
+    }
+  ],
+  "msg": "操作成功"
+}

@@ -24,7 +24,7 @@
             android:layout_height="0dp"
             android:background="@color/bg_color"
             app:canLoop="true"
-            app:layout_heightPercent="50%w" />
+            app:layout_heightPercent="65%w" />
 
         <LinearLayout
             android:layout_width="match_parent"

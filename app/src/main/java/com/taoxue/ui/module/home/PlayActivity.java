@@ -24,13 +24,14 @@ import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
 import com.taoxue.ui.adapter.LsvPlayRcommandAdapter;
 import com.taoxue.ui.model.BaseResultModel;
-import com.taoxue.ui.model.VideoBean;
 import com.taoxue.ui.model.ResourceModel;
+import com.taoxue.ui.model.VideoBean;
 import com.taoxue.ui.model.VolumnBean;
 import com.taoxue.ui.module.search.BaseMyAdapter;
 import com.taoxue.ui.module.yuejia.ResourceDetailActivity;
 import com.taoxue.ui.view.StarBar;
 import com.taoxue.utils.LogUtils;
+import com.taoxue.utils.UtilGson;
 import com.taoxue.utils.UtilToast;
 import com.taoxue.utils.UtilTools;
 
@@ -83,6 +84,7 @@ public class PlayActivity extends BaseActivity implements MDPlayer.OnNetChangeLi
     String resource_id;
     String gys_id;
     String cgs_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,17 +96,25 @@ public class PlayActivity extends BaseActivity implements MDPlayer.OnNetChangeLi
 
     /**
      * 得到intent中的数据
+     *
      * @return
      */
     private void network() {
         Bundle bundle = getIntent().getExtras();
-        cgs_id= bundle.getString("cys_id");
+        cgs_id = bundle.getString("cys_id");
         resource_id = bundle.getString("resource_id");
-         gys_id=bundle.getString("gys_id");
-        HttpAdapter.getService().getVideo(resource_id,cgs_id).enqueue(new OnResponseListener<BaseResultModel<VideoBean>>(this) {
+        gys_id = bundle.getString("gys_id");
+        HttpAdapter.getService().getVideo(resource_id, cgs_id).enqueue(new OnResponseListener<BaseResultModel<VideoBean>>(this) {
             @Override
             protected void onSuccess(BaseResultModel<VideoBean> model) {
                 setData(model.getData());
+                mPlayBottomView.setResource_id(resource_id, gys_id);
+            }
+
+            @Override
+            protected void onError(int code, String msg) {
+                VideoBean bean = UtilGson.getJson(mActivity, "VideoBean.json", VideoBean.class);
+                setData(bean);
                 mPlayBottomView.setResource_id(resource_id, gys_id);
             }
         });
@@ -121,23 +131,23 @@ public class PlayActivity extends BaseActivity implements MDPlayer.OnNetChangeLi
         mTvResourceName.setText(bean.getResource_name());
         mStarBar.setStarMark(Float.valueOf(bean.getAvg_score()));
         mStarBar.setChangMark(false);
-        mTvPinFen.setText(bean.getAvg_score()+"");
+        mTvPinFen.setText(bean.getAvg_score() + "");
 
         mPlayBottomView.setCollect(Integer.valueOf(bean.getIs_collection()));
         mPlayBottomView.setDianZan(Integer.valueOf(bean.getIs_praise()));
-        if (bean.getItem().size()==0) {
+        if (bean.getItem().size() == 0) {
             UtilToast.showText("该资源没有视频");
 
-        }else{
+        } else {
             setAdapter(bean.getItem().get(0).getVolumn());//横向 listview adapter 赋值
             initVideoView(bean.getItem().get(0).getVolumn().get(0));//播放第一个视频
         }
-        BaseMyAdapter adapter=new LsvPlayRcommandAdapter(this,bean.getRecommend_forYou());
+        BaseMyAdapter adapter = new LsvPlayRcommandAdapter(this, bean.getRecommend_forYou());
         mLsvRFY.setAdapter(adapter);
         mLsvRFY.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                launch(ResourceDetailActivity.class,bean.getRecommend_forYou().get(position).getResource_id());
+                launch(ResourceDetailActivity.class, bean.getRecommend_forYou().get(position).getResource_id());
             }
         });
     }
@@ -234,7 +244,7 @@ public class PlayActivity extends BaseActivity implements MDPlayer.OnNetChangeLi
      * 初始化播放器
      */
     private void initPlayer(String title, String url) {
-        LogUtils.i("initPlayer","title "+title+"  url");
+        LogUtils.i("initPlayer", "title " + title + "  url");
         rvCommonAdapter.notifyDataSetChanged();
         if (false) {
             player.setLive(true);//设置该地址是直播的地址

@@ -1,0 +1,111 @@
+{
+  "code": 1,
+  "msg": "操作成功",
+  "avg_score": "60",
+  "collection_num": 53,
+  "comment_num": 123,
+  "description": "有一只100万年也不死的猫，它死了100万次，又活了100万次。",
+  "is_collection": "0",
+  "is_comment": "0",
+  "is_praise": "0",
+  "praise_num": 20,
+  "resource_name": "活了一百万次的猫",
+
+  "item": [
+    {
+      "file_type": "audio",
+      "volumn": [
+        {
+          "order": 1,
+          "resource_name": "反脆弱_试听",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 2,
+          "resource_name": "一念之差_试听去讲书人片头",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        },
+        {
+          "order": 3,
+          "resource_name": "深度工作试听（有广告）32000-128",
+          "url": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+        }
+      ]
+    }
+  ]
+}

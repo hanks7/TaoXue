@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.taoxue.R;
 import com.taoxue.app.BaseApplication;
+import com.taoxue.base.BaseActivity;
 import com.taoxue.base.BaseListFragment;
 import com.taoxue.base.BaseRecyclerAdapter;
 import com.taoxue.base.BaseViewHolder;
@@ -26,7 +27,7 @@ public class BuyingResourceFragment extends BaseListFragment<BuyingResourceFragm
     @Override
     protected void loadData(int page, int pageSize) {
         getServer().userPay(BaseApplication.get().getUserModel().getUser_id(), page, pageSize)
-                .enqueue(new OnRefreshListResponseListener<BuyingResource>(getActivity(),getRecyclerView(), getPageInfoModel()));
+                .enqueue(new OnRefreshListResponseListener<BuyingResource>((BaseActivity) getActivity(),getRecyclerView(), getPageInfoModel()));
     }
 
 

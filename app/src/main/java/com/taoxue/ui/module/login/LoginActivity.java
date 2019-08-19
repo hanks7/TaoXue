@@ -25,6 +25,7 @@ import com.taoxue.ui.module.login.ologin.LoginChar;
 import com.taoxue.ui.module.login.ologin.TecentLogin;
 import com.taoxue.ui.view.TopBar;
 import com.taoxue.utils.LogUtils;
+import com.taoxue.utils.UtilGson;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -54,13 +55,13 @@ public class LoginActivity extends BaseActivity {
 
     private UMShareAPI mShareAPI;
     String QQ_APPID = "101397990";
-    public static  final   String  LOGIN_READER_CARD="LOGINREADERCARD";
-    public static   int registerResultCode=1111;
-    public static   int LOGIN_READER_CARD_CODE=2616;
+    public static final String LOGIN_READER_CARD = "LOGINREADERCARD";
+    public static int registerResultCode = 1111;
+    public static int LOGIN_READER_CARD_CODE = 2616;
 
-    String Mobile_Login_Type="mobile";
-    String Reader_Card_Login_Type="library";
-    String WeiXin_Login_Type="weixin";
+    String Mobile_Login_Type = "mobile";
+    String Reader_Card_Login_Type = "library";
+    String WeiXin_Login_Type = "weixin";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,8 +72,8 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 //                  UtilIntent.intentDIYLeftToRight(mActivity, RegisterActivity.class);
-                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivityForResult(intent,registerResultCode);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivityForResult(intent, registerResultCode);
             }
         });
     }
@@ -133,7 +134,7 @@ public class LoginActivity extends BaseActivity {
                     public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
                         String openid = map.get("openid");//微博没有
                         String access_token = map.get("access_token");
-                        checkWeixinLogin(openid, access_token,map, LOGIN_QQ);
+                        checkWeixinLogin(openid, access_token, map, LOGIN_QQ);
                         showToast(map.toString());
                     }
 
@@ -162,12 +163,12 @@ public class LoginActivity extends BaseActivity {
 
                 break;
             case R.id.Wxlogin_Btn://-----------------------------------------------------------------------------------微信登录
-               mShareAPI.getPlatformInfo(this, SHARE_MEDIA.WEIXIN, new UMAuthListener() {
+                mShareAPI.getPlatformInfo(this, SHARE_MEDIA.WEIXIN, new UMAuthListener() {
                     @Override
                     public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
                         String openid = map.get("openid");//微博没有
                         String access_token = map.get("access_token");
-                        checkWeixinLogin(openid, access_token,map, LOGIN_WEIXIN);
+                        checkWeixinLogin(openid, access_token, map, LOGIN_WEIXIN);
                     }
 
                     @Override
@@ -226,12 +227,20 @@ public class LoginActivity extends BaseActivity {
      * @param name
      * @param pw
      */
-    private void initLogin(String name, String pw,String type) {
-        HttpAdapter.getService().getLogin(name, pw,type).enqueue(new OnResponseListener<BaseResultModel<UserModel>>(this) {
+    private void initLogin(String name, String pw, String type) {
+        HttpAdapter.getService().getLogin(name, pw, type).enqueue(new OnResponseListener<BaseResultModel<UserModel>>(this) {
             @Override
             protected void onSuccess(BaseResultModel<UserModel> resultModel) {
                 showToast(resultModel.getMsg());
                 BaseApplication.get().setUserModel(resultModel.getData());
+                finish();
+            }
+
+            @Override
+            protected void onError(int code, String msg) {
+                UserModel bean = UtilGson.getJson(mActivity, "UserModel.json", UserModel.class);
+                showToast(bean.getMsg());
+                BaseApplication.get().setUserModel(bean);
                 finish();
             }
         });
@@ -305,7 +314,7 @@ public class LoginActivity extends BaseActivity {
     private final String LOGIN_QQ = "QQ";
     private final String LOGIN_WEIXIN = "weixin";
 
-    private void checkWeixinLogin(final String openid, final String access_token,final Map<String, String> map,final String type) {
+    private void checkWeixinLogin(final String openid, final String access_token, final Map<String, String> map, final String type) {
         HttpRequest.checkWeixinLogin(openid, access_token, new HttpRequest.RequestBaseModelCallBack() {
             @Override
             public void onSuccess(BaseModel baseModel) {
@@ -315,7 +324,7 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onUnSuccess(String msg) {
-                    weixinRegister(map,openid,type);
+                weixinRegister(map, openid, type);
             }
         });
     }
@@ -325,7 +334,7 @@ public class LoginActivity extends BaseActivity {
      *
      * @param map
      */
-    private void weixinRegister(Map<String, String> map,String openid,String type) {
+    private void weixinRegister(Map<String, String> map, String openid, String type) {
         String nickname = map.get("name");
         String sex;
         String headIvUrl;
@@ -367,9 +376,9 @@ public class LoginActivity extends BaseActivity {
         } else {
             if (requestCode == com.tencent.connect.common.Constants.REQUEST_LOGIN) {
                 tecentLogin.onActivityResultData(requestCode, resultCode, data);
-            } else if (requestCode==registerResultCode){
+            } else if (requestCode == registerResultCode) {
                 finish();
-            }else if (requestCode==LOGIN_READER_CARD_CODE){
+            } else if (requestCode == LOGIN_READER_CARD_CODE) {
                 finish();
             } else {
                 LogUtils.D("微信登录");

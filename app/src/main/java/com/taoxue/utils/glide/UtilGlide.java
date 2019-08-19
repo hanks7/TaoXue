@@ -60,15 +60,13 @@ public class UtilGlide {
      * @param imageView
      */
     public static void loadImg(Context context, String url, final ImageView imageView) {
-        try {
-            Glide.with(context)
-                    .load(getStringEND(url))
-                    .asBitmap()
-                    .placeholder(placeholderPic).error(errorPic)
-                    .into(new MyBitmapImageViewTarget(imageView));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        Glide.with(context)
+                .load(getStringEND(url))
+                .placeholder(placeholderPic).error(errorPic)
+                .centerCrop()
+                .into(imageView);
+
     }
 
     /**
@@ -79,12 +77,18 @@ public class UtilGlide {
      * @param imageView
      */
     public static void loadImgNomal(Context context, String url, final ImageView imageView) {
+//        Glide.with(context)
+//                .load(getStringEND(url))
+//                .fitCenter()
+//                .diskCacheStrategy(DiskCacheStrategy.ALL) //设置缓存
+//                .placeholder(placeholderPic).error(errorPic)
+//                .crossFade()
+//                .into(imageView);
+
         Glide.with(context)
                 .load(getStringEND(url))
-                .fitCenter()
-                .diskCacheStrategy(DiskCacheStrategy.ALL) //设置缓存
                 .placeholder(placeholderPic).error(errorPic)
-                .crossFade()
+                .centerCrop()
                 .into(imageView);
     }
 

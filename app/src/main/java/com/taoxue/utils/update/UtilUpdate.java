@@ -1,6 +1,5 @@
 package com.taoxue.utils.update;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,6 +7,7 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.taoxue.app.Constants;
+import com.taoxue.base.BaseActivity;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
 import com.taoxue.ui.model.BaseResultModel;
@@ -65,7 +65,7 @@ public class UtilUpdate {
      *
      * @param context
      */
-    public static void judgeUpdate(final Activity context, final Runnable runnable) {
+    public static void judgeUpdate(final BaseActivity context, final Runnable runnable) {
         HttpAdapter.getService().getApkVersionUpdate(UtilSystem.getVersionCode())
                 .enqueue(new OnResponseListener<BaseResultModel<IsUpdateBean>>(context) {
                     @Override

@@ -440,7 +440,7 @@ public class HomeFragment extends BaseFragment {
      * 网络请求
      */
     private void netWork() {
-        HttpAdapter.getService().getHome1().enqueue(new OnResponseListener<BaseResultModel<ApiOneBean>>(getActivity()) {
+        HttpAdapter.getService().getHome1().enqueue(new OnResponseListener<BaseResultModel<ApiOneBean>>(null) {
             @Override
             protected void onSuccess(BaseResultModel<ApiOneBean> bean) {
                 refreshLayout.refreshComplete();
@@ -448,7 +448,7 @@ public class HomeFragment extends BaseFragment {
             }
 
             @Override
-            protected void onRequestFailure() {
+            protected void onError(int code, String msg) {
                 refreshLayout.refreshComplete();
                 String json = UtilGson.getJson(getContext(), "ApiOneBean.json");
                 ApiOneBean bean = UtilGson.toBean(json, ApiOneBean.class);

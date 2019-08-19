@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.taoxue.R;
+import com.taoxue.base.BaseActivity;
 import com.taoxue.base.BaseListFragment;
 import com.taoxue.base.BaseRecyclerAdapter;
 import com.taoxue.base.BaseViewHolder;
@@ -31,7 +32,7 @@ public class SearchResultFragment extends BaseListFragment<SearchResultFragment.
     @Override
     protected void loadData(int page, int pageSize) {
         getServer().collection( page, pageSize)
-                .enqueue(new OnRefreshListResponseListener<FragCollectionBean>(getActivity(), getRecyclerView(), getPageInfoModel()));
+                .enqueue(new OnRefreshListResponseListener<FragCollectionBean>((BaseActivity) getActivity(), getRecyclerView(), getPageInfoModel()));
     }
 
     protected void bindAdapterItemView(SearchResultFragment.ExampleHolder holder, final FragCollectionBean bean, int position) {

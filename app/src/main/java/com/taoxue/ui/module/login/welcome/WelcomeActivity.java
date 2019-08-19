@@ -11,11 +11,12 @@ import android.support.v4.view.ViewPager;
 import com.taoxue.R;
 import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
-import com.taoxue.utils.StatusBarCompat;
 import com.taoxue.utils.permission.PermissionReq;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.taoxue.utils.StatusbarUtils.enableTranslucentStatusbar;
 
 /**
  * Created by Administrator on 2016/11/19.
@@ -31,9 +32,9 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        enableTranslucentStatusbar(this);
         setContentView(R.layout.activity_welcome);
         init();
-        StatusBarCompat.getStatusBarHeight(this);
     }
 
     private void init() {

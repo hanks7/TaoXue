@@ -43,8 +43,7 @@
         <activity
             android:name=".ui.module.login.PushActivity"
             android:configChanges="orientation|keyboardHidden|keyboard"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Start">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -225,7 +224,7 @@
         <activity android:name=".ui.module.search.WebFlistLibActivity" />
         <activity android:name=".ui.module.search.WebFlistLib2Activity" />
         <activity android:name=".ui.module.search.WebFlistSuppActivity" />
-        <activity android:name=".ui.module.home.MyCollectActivity"/>
+        <activity android:name=".ui.module.home.MyCollectActivity" />
     </application>
 
 </manifest>

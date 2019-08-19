@@ -9,18 +9,18 @@ import android.widget.TextView;
 
 import com.taoxue.MainActivity;
 import com.taoxue.R;
-import com.taoxue.app.Constants;
 import com.taoxue.app.BaseApplication;
 import com.taoxue.base.BaseActivity;
 import com.taoxue.ui.module.login.welcome.WelcomeActivity;
 import com.taoxue.ui.module.search.HomeLibActivity;
 import com.taoxue.ui.module.yuejia.ResourceDetailActivity;
 import com.taoxue.utils.LogUtils;
-import com.taoxue.utils.StatusBarCompat;
 import com.taoxue.utils.UtilIntent;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.taoxue.utils.StatusbarUtils.enableTranslucentStatusbar;
 
 /**
  * Created by Administrator on 2016/11/22.
@@ -31,14 +31,14 @@ public class PushActivity extends BaseActivity {
     @BindView(R.id.push_time_tv)
     TextView tvTime;
     int time = 1;
-    final int totalCount = 0;
+    final int totalCount = 5;
     boolean skiped;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        enableTranslucentStatusbar(this);
         setContentView(R.layout.activity_push);
-        StatusBarCompat.getStatusBarHeight(this);
     }
 
     @Override
@@ -116,11 +116,6 @@ public class PushActivity extends BaseActivity {
     };
 
     private void next() {
-        if (Constants.IS_TEST) {
-            UtilIntent.intentDIYLeftToRight(this, WelcomeActivity.class);
-            finish();
-            return;
-        }
         UtilIntent.intentDIYLeftToRight(this,
                 BaseApplication.get().isFirstEnter() ? WelcomeActivity.class : MainActivity.class,
                 android.R.anim.fade_in, android.R.anim.fade_out);

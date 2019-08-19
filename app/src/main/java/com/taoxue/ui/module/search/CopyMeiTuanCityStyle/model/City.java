@@ -55,13 +55,5 @@ public class City implements Serializable {
         this.short_name = short_name;
     }
 
-    @Override
-    public String toString() {
-        return "City{" +
-                "ids='" + ids + '\'' +
-                ", index='" + index + '\'' +
-                ", name='" + name + '\'' +
-                ", short_name='" + short_name + '\'' +
-                '}';
-    }
+
 }

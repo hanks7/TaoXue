@@ -1,5 +1,7 @@
 package com.taoxue.base;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.taoxue.app.DialogInterface;
 import com.taoxue.ui.module.classification.MessageEvent;
 import com.taoxue.utils.LogUtils;
 import com.taoxue.utils.Ulog;
@@ -29,7 +32,7 @@ import butterknife.ButterKnife;
  * Created by CC on 2016/5/25.
  */
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements DialogInterface {
     public BaseActivity mActivity;
 
     @Override
@@ -39,12 +42,13 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-        protected void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//强制竖屏
         EventBus.getDefault().register(this);
         ButterKnife.setDebug(true);
         mActivity = this;
+        initDialog();
     }
 
 
@@ -106,6 +110,9 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        if (dialog != null) {
+            dialog.dismiss();
+        }
     }
 
     public void launch(Class clazz) {
@@ -119,7 +126,7 @@ public class BaseActivity extends AppCompatActivity {
 
 
     public void launch(Class clazz, @NonNull Object obj) {
-        LogUtils.i("launch",obj);
+        LogUtils.i("launch", obj);
         Bundle bundle = new Bundle();
         if (obj != null) {
             if (obj instanceof Serializable) {
@@ -153,7 +160,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void launch(Class clazz, @NonNull Object obj1, @NonNull Object obj2) {
-        LogUtils.i("launch",obj1+"     "+obj2);
+        LogUtils.i("launch", obj1 + "     " + obj2);
         Bundle bundle = new Bundle();
         if (obj1 != null) {
             if (obj1 instanceof Serializable) {
@@ -196,14 +203,41 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-
     //    将String 为null 值时转化为空
-    public  String nullToSting(String str) {
+    public String nullToSting(String str) {
         String s = TextUtils.isEmpty(str) ? "" : str.trim();
         if ("null".equals(s)) {
             return " ";
         }
         return s;
+    }
+
+    private ProgressDialog dialog;//显示等待的dialog
+
+    private void initDialog() {
+        dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);//转盘
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setMessage("正在加载，请稍后……");
+
+    }
+
+    @Override
+    public void showDialog() {
+        if (dialog == null) return;
+        dialog.show();
+    }
+
+    @Override
+    public void dismissDialog() {
+        if (dialog == null) return;
+        dialog.dismiss();
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
     }
 
 }

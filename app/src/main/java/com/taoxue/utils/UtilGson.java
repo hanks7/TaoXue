@@ -71,6 +71,7 @@ public class UtilGson {
         }
     }
 
+
     /**
      * 得到json文件中的内容
      *
@@ -94,6 +95,63 @@ public class UtilGson {
             e.printStackTrace();
         }
         return stringBuilder.toString();
+    }
+
+    /**
+     * 得到json文件中的内容
+     *
+     * @param context
+     * @param fileName
+     * @return
+     */
+    public static <T> T getJson(Context context, String fileName, Class<T> cls) {
+
+        String json = getJson(context, fileName);
+        return toBean(json, cls);
+    }
+
+    /**
+     * 得到json文件中的内容
+     *
+     * @param context
+     * @param fileName
+     * @return
+     */
+    public static <T> T getJson2(Context context, String fileName, Class<T> cls) {
+
+        String json = getJson(context, fileName);
+        return toBean(json, cls);
+    }
+
+    /**
+     * json字符串转成对象
+     *
+     * @param str
+     * @param type
+     * @return
+     */
+    public static Object fromJsonToObject(String str, Type type) {
+        try {
+            return gson.fromJson(str, type);
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+
+    /**
+     * json字符串转成对象
+     *
+     * @param str
+     * @return
+     */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public static Object fromJsonToObject(String str, Class clazz) {
+        try {
+            return gson.fromJson(str, clazz);
+        } catch (Exception e) {
+        }
+        return null;
     }
 
     /**

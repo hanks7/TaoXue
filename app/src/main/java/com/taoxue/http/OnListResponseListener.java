@@ -1,7 +1,6 @@
 package com.taoxue.http;
 
-import android.content.Context;
-
+import com.taoxue.base.BaseActivity;
 import com.taoxue.ui.model.BasePageModel;
 
 import java.io.Serializable;
@@ -14,7 +13,7 @@ public abstract class OnListResponseListener<Bean extends Serializable> extends 
 
     private List<Bean> listData;
 
-    protected OnListResponseListener(Context context) {
+    protected OnListResponseListener(BaseActivity context) {
         super(context);
     }
 }

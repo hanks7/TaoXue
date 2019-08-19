@@ -29,6 +29,7 @@ import com.taoxue.ui.module.search.CopyMeiTuanCityStyle.utils.StringUtils;
 import com.taoxue.ui.module.search.CopyMeiTuanCityStyle.view.SideLetterBar;
 import com.taoxue.ui.module.search.bean.SearchSupplierBean;
 import com.taoxue.ui.view.PopWinMenu;
+import com.taoxue.utils.UtilGson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +81,7 @@ public class SearchLibActivity extends BaseActivity {
         StatusBarLightMode(this);//设置状态栏颜色为黑色
         setContentView(R.layout.activity_city_picker);
         ButterKnife.bind(this);
-        final PopWinMenu popWinMenu=  new PopWinMenu(this);//初始化popwinMenu mTvSearchSelector
+        final PopWinMenu popWinMenu = new PopWinMenu(this);//初始化popwinMenu mTvSearchSelector
         mTvSearchSelector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +113,16 @@ public class SearchLibActivity extends BaseActivity {
                         mCityAdapter.sjdfkljsadfkljaskdfl((ArrayList) bean.getItem());
                         initResult();
                     }
+
+                    @Override
+                    protected void onError(int code, String msg) {
+                        SearchSupplierBean bean = UtilGson.getJson(mActivity, "SearchSupplierBean.json", SearchSupplierBean.class);
+                        insertSQL((ArrayList) bean.getItem());
+                        mCityAdapter.sjdfkljsadfkljaskdfl(bean.getItem());
+                        initResult();
+                    }
+
+
                 });
     }
 
@@ -234,7 +245,7 @@ public class SearchLibActivity extends BaseActivity {
 //        Bundle bundle = new Bundle();
 //        bundle.putString("ids", city.getIds());
 //        UtilIntent.intentDIYLeftToRight(mActivity, WebLibHomeActivity.class, bundle);
-        launch(WebLibHomeActivity.class,city.getIds());
+        launch(WebLibHomeActivity.class, city.getIds());
     }
 
 

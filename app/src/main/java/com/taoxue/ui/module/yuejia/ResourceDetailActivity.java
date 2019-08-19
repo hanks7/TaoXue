@@ -2,11 +2,14 @@ package com.taoxue.ui.module.yuejia;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.common.base.basecommon.BaseAdapter.Base.RvViewHolder;
@@ -28,6 +31,7 @@ import com.taoxue.ui.module.home.PlayActivity;
 import com.taoxue.ui.view.PlayBottomView;
 import com.taoxue.ui.view.StarBar;
 import com.taoxue.ui.view.TopBar;
+import com.taoxue.utils.UtilGson;
 import com.taoxue.utils.glide.UtilGlide;
 import com.txt.readerlibrary.TxtReader;
 
@@ -38,7 +42,7 @@ public class ResourceDetailActivity extends BaseActivity {
     //    http://117.71.57.47:11000/frontend/mt/h5/20/resource/getDetail.do?resource_id=402883d26033f002016034136f6b001c
     String resource_id;
     @BindView(R.id.introduction_topbar)
-    TopBar introductionTopbar;
+    TopBar mTopbar;
     @BindView(R.id.iv_resource_pic)
     ImageView ivResourcePic;
     @BindView(R.id.tv_resource_name)
@@ -72,6 +76,8 @@ public class ResourceDetailActivity extends BaseActivity {
     ImageView ivSmall;
     @BindView(R.id.pinglun_all)
     TextView pinglunAll;
+    @BindView(R.id.introduction_scrollview)
+    ScrollView mSv;
 
     Context context;
     ResDetailBean bean;
@@ -79,7 +85,7 @@ public class ResourceDetailActivity extends BaseActivity {
     String gys_id = "";
 
 
-
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +100,42 @@ public class ResourceDetailActivity extends BaseActivity {
 
         onClickdo();
 
+        mSv.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+
+                mTopbar.setNeedTranslucent(getTransAlpha());
+
+            }
+        });
+
+
+    }
+    //渐变开始位置
+    private int transStartY = 50;
+    //渐变结束位置
+    private int transEndY = 400;
+    /**
+     * 获取透明度
+     *
+     * @return
+     */
+    private int getTransAlpha() {
+        float scrollY = mSv.getScrollY();
+        if (transStartY != 0) {
+            if (scrollY <= transStartY) {
+                return 0;
+            } else if (scrollY >= transEndY) {
+                return 255;
+            } else {
+                return (int) ((scrollY - transStartY) / (transEndY - transStartY) * 255);
+            }
+        } else {
+            if (scrollY >= transEndY) {
+                return 255;
+            }
+            return (int) ((transEndY - scrollY) / transEndY * 255);
+        }
     }
 
     //获取  txt
@@ -156,6 +198,22 @@ public class ResourceDetailActivity extends BaseActivity {
                     showToast("没有资源");
                 }
             }
+
+            @Override
+            protected void onError(int code, String msg) {
+                ReadInfoBean bean = UtilGson.getJson(mActivity, "ReadInfoBean.json", ReadInfoBean.class);
+
+                if (bean.getItem() != null && bean.getItem().size() > 0) {
+                    ReadInfoBean infoBean = bean;
+                    infoBean.setResource_id(resource_id);
+                    infoBean.setGys_id(gys_id);
+                    launch(ScanImageActivity.class, infoBean);
+
+                } else {
+                    showToast("没有资源");
+                }
+
+            }
         });
 
     }
@@ -167,24 +225,33 @@ public class ResourceDetailActivity extends BaseActivity {
         startRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i = 0; i < bean.getFile_type().size(); i++) {
-                    fileType += bean.getFile_type().get(i);
-                }
-                if (fileType.contains("电子书")) {
-                    onHttp();
-                } else if (fileType.contains("绘本")) {
-                    onImageHttp();
-                } else if (fileType.contains("知识解读")) {
-                    onAudioHttp();
-                } else if (fileType.contains("视频")) {
-                    Intent intent = new Intent();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("resource_id", resource_id);
-                    bundle.putString("cys_id", cgs_id);
-                    bundle.putString("gys_id", gys_id);
-                    intent.putExtras(bundle);
-                    launch(PlayActivity.class, intent);
-                }
+
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putString("resource_id", resource_id);
+                bundle.putString("cys_id", cgs_id);
+                bundle.putString("gys_id", gys_id);
+                intent.putExtras(bundle);
+                launch(PlayActivity.class, intent);
+
+//                for (int i = 0; i < bean.getFile_type().size(); i++) {
+//                    fileType += bean.getFile_type().get(i);
+//                }
+//                if (fileType.contains("电子书")) {
+//                    onHttp();
+//                } else if (fileType.contains("绘本")) {
+//                    onImageHttp();
+//                } else if (fileType.contains("知识解读")) {
+//                    onAudioHttp();
+//                } else if (fileType.contains("视频")) {
+//                    Intent intent = new Intent();
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("resource_id", resource_id);
+//                    bundle.putString("cys_id", cgs_id);
+//                    bundle.putString("gys_id", gys_id);
+//                    intent.putExtras(bundle);
+//                    launch(PlayActivity.class, intent);
+//                }
             }
         });
 
@@ -216,6 +283,18 @@ public class ResourceDetailActivity extends BaseActivity {
 
                     }
                 }
+
+                @Override
+                protected void onError(int code, String msg) {
+                    ResDetailBean bean = UtilGson.getJson(mActivity, "ResDetailBean.json", ResDetailBean.class);
+                    gys_id = bean.getGys_id();
+                    onInitView(bean);
+                    mPlayBottomView.setResource_id(resource_id, bean.getGys_id());
+                    mPlayBottomView.setDianZan(Integer.valueOf(bean.getIs_praise()));
+                    mPlayBottomView.setCollect(Integer.valueOf(bean.getIs_collection()));
+
+
+                }
             });
         }
     }
@@ -229,7 +308,7 @@ public class ResourceDetailActivity extends BaseActivity {
         tvResourcePushtion.setText("出版社:" + bean.getPublisher());
         pinglun.setText("评论(" + bean.getComment_num() + ")");
         UtilGlide.loadImgCeterCrop(context, bean.getResource_picture(), ivSmall);
-        UtilGlide.showImageViewBlur(context,R.mipmap.imagedaiti,bean.getResource_picture(),ivResourcePic);
+        UtilGlide.showImageViewBlur(context, R.mipmap.imagedaiti, bean.getResource_picture(), ivResourcePic);
         if (bean.getComment().size() > 0) {
             RvComAdapter rvComAdapter = new RvComAdapter.Builder<>(this, R.layout.comment_item, bean.getComment())
                     .setLayoutManagerType(RvComAdapter.LINEARLAYOUTMANAGER)

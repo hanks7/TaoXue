@@ -384,6 +384,20 @@
       "type": "都在看"
     }
   ],
+  "banner": [
+    {
+      "img": "https://img1.doubanio.com/view/photo/l/public/p2564990647.webp"
+    },
+    {
+      "img": "https://img3.doubanio.com/view/photo/l/public/p2564396154.webp"
+    },
+    {
+      "img": "https://img3.doubanio.com/view/photo/l/public/p2564396175.webp"
+    },
+    {
+      "img": "https://img3.doubanio.com/view/photo/l/public/p2564990643.webp"
+    }
+  ],
   "snbl": [
     {
       "description": "内容单纯、篇幅短小，与儿童的接受相适应，供儿童阅读和聆听的叙事性文学体裁。故事视频具有完整连贯，生动有趣，语言口语化和生活化等特征，故事的幻想\u201c打开了通向另一种生活的窗子，那里，有一种自由的无畏的力量存在着和行动者，幻想着更美好的生活。",

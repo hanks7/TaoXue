@@ -1,9 +1,7 @@
 package com.taoxue.ui.module.login;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -17,7 +15,6 @@ import com.taoxue.http.OnResponseListener;
 import com.taoxue.ui.model.BaseBean;
 import com.taoxue.ui.model.BaseResultModel;
 import com.taoxue.ui.model.YzmBean;
-import com.taoxue.ui.module.classification.CommitContent;
 import com.taoxue.ui.view.TopBar;
 import com.taoxue.utils.LogUtils;
 
@@ -49,6 +46,7 @@ public class ForgotPasswordActivity extends BaseActivity {
         setContentView(R.layout.activity_forgot_password);
         ButterKnife.bind(this);
     }
+
     class TimeCount extends CountDownTimer {
 
         public TimeCount(long millisInFuture, long countDownInterval) {
@@ -72,9 +70,9 @@ public class ForgotPasswordActivity extends BaseActivity {
 
 
     /*
-        **
-                * 验证手机格式
-        */
+     **
+     * 验证手机格式
+     */
     public static boolean isMobileNO(String mobile) {
     /*
     移动：134、135、136、137、138、139、150、151、157(TD)、158、159、187、188
@@ -89,8 +87,10 @@ public class ForgotPasswordActivity extends BaseActivity {
             return mobile.matches(telRegex);
         }
     }
+
     private TimeCount timeCount;
-   private  String phoneCode;
+    private String phoneCode;
+
     /**
      * 发送验证码
      *
@@ -101,50 +101,46 @@ public class ForgotPasswordActivity extends BaseActivity {
         call.enqueue(new OnResponseListener<BaseResultModel<YzmBean>>(this) {
             @Override
             protected void onSuccess(BaseResultModel baseResultModel) {
-                if (baseResultModel.getCode()==1){
+                if (baseResultModel.getCode() == 1) {
                     showToast(baseResultModel.getMsg());
                     YzmBean yzm = (YzmBean) baseResultModel.getData();
 //                    LogUtils.D("cbb--->" + yzm.toString());
                     phoneCode = yzm.getYzm();
                     LogUtils.D("cbbcode--->" + phoneCode);
-                }else {
-                    getFailureCode(baseResultModel.getMsg());
+                } else {
+                    getFailureCode();
                 }
             }
 
             @Override
-            protected void onFailure(String msg) {
-                super.onFailure(msg);
-                getFailureCode(msg);
+            protected void onError(int code, String msg) {
+                getFailureCode();
             }
 
-            @Override
-            protected void onFailure(int code) {
-                super.onFailure(code);
-                getFailureCode("错误码:"+code);
-            }
+
         });
     }
 
-    private  void getFailureCode(String msg){
+    private void getFailureCode() {
 //        showToast(msg);
         timeCount.cancel();
         forgetPwCodeBtn.setTextColor(getResources().getColorStateList(R.color.color666));
         forgetPwCodeBtn.setText("重新获取验证码");
         forgetPwCodeBtn.setClickable(true);
     }
-    private  String code,mobile,pwd,newPwd;
 
-    private  void updateForgetPw(){
-        Call<BaseBean> call = HttpAdapter.getService().updateforgetPw(mobile,code,pwd,newPwd);
+    private String code, mobile, pwd, newPwd;
+
+    private void updateForgetPw() {
+        Call<BaseBean> call = HttpAdapter.getService().updateforgetPw(mobile, code, pwd, newPwd);
         call.enqueue(new OnResponseListener<BaseBean>(this) {
             @Override
             protected void onSuccess(BaseBean baseBean) {
-                if (baseBean.getCode()==1){
+                if (baseBean.getCode() == 1) {
                     showToast("密码设置成功，请重新登录");
                     finish();
-                }else{
-                       showToast(baseBean.getMsg());
+                } else {
+                    showToast(baseBean.getMsg());
                 }
             }
         });
@@ -160,15 +156,15 @@ public class ForgotPasswordActivity extends BaseActivity {
                 mobile = forgetPwPhoto.getText().toString();
                 pwd = forgetPwPw.getText().toString();
                 newPwd = forgetPwNewpw.getText().toString();
-             if (TextUtils.isEmpty(mobile)||TextUtils.isEmpty(code)){
-                 showToast("请先验证手机号");
-                 return;
-             }
-               if (!phoneCode.equals(code)){
-                   showToast("您输入的验证码不正确，请重新输入");
-                   return;
-               }
-                if (TextUtils.isEmpty(pwd)||TextUtils.isEmpty(newPwd)){
+                if (TextUtils.isEmpty(mobile) || TextUtils.isEmpty(code)) {
+                    showToast("请先验证手机号");
+                    return;
+                }
+                if (!phoneCode.equals(code)) {
+                    showToast("您输入的验证码不正确，请重新输入");
+                    return;
+                }
+                if (TextUtils.isEmpty(pwd) || TextUtils.isEmpty(newPwd)) {
                     showToast("请输入密码");
                     return;
                 }
@@ -176,7 +172,7 @@ public class ForgotPasswordActivity extends BaseActivity {
                 if (!pwd.equals(newPwd)) {
                     showToast("请输入一致密码");
                 } else {
-                updateForgetPw();
+                    updateForgetPw();
                 }
 
                 break;

@@ -3,6 +3,7 @@ package com.taoxue.ui.module.home;
 import android.view.View;
 
 import com.taoxue.R;
+import com.taoxue.base.BaseActivity;
 import com.taoxue.base.BaseListFragment;
 import com.taoxue.base.BaseRecyclerAdapter;
 import com.taoxue.base.BaseViewHolder;
@@ -26,7 +27,7 @@ public class ExampleListFragment extends BaseListFragment<ExampleListFragment.Ex
 //        String cityCode = XiaoLuApplication.get().getCityCode();
 //        String cityname = XiaoLuApplication.get().getCity().getCityname();
         getServer().getCatalogType()
-                .enqueue(new OnRefreshListResponseListener<BaseModel>(getActivity(),
+                .enqueue(new OnRefreshListResponseListener<BaseModel>((BaseActivity) getActivity(),
                         getRecyclerView(), getPageInfoModel()));
     }
 

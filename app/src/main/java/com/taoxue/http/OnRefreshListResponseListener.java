@@ -1,7 +1,6 @@
 package com.taoxue.http;
 
-import android.content.Context;
-
+import com.taoxue.app.DialogInterface;
 import com.taoxue.base.BaseRecyclerAdapter;
 import com.taoxue.ui.model.BasePageModel;
 import com.taoxue.ui.model.PageInfoModel;
@@ -22,7 +21,7 @@ public class OnRefreshListResponseListener<Bean extends Serializable> extends On
      */
     private PageInfoModel pageInfoModel;
 
-    public OnRefreshListResponseListener(Context context, SuperRecyclerView recyclerView) {
+    public OnRefreshListResponseListener(DialogInterface context, SuperRecyclerView recyclerView) {
         super(context);
         this.recyclerView = recyclerView;
         if (!(recyclerView.getAdapter() instanceof BaseRecyclerAdapter)) {
@@ -30,12 +29,8 @@ public class OnRefreshListResponseListener<Bean extends Serializable> extends On
         }
     }
 
-    @Override
-    protected boolean needDialog() {
-        return false;
-    }
 
-    public OnRefreshListResponseListener(Context context, SuperRecyclerView recyclerView, PageInfoModel pageInfoModel) {
+    public OnRefreshListResponseListener(DialogInterface context, SuperRecyclerView recyclerView, PageInfoModel pageInfoModel) {
         this(context, recyclerView);
         this.pageInfoModel = pageInfoModel;
         recyclerView.hideMoreProgress();
@@ -43,8 +38,8 @@ public class OnRefreshListResponseListener<Bean extends Serializable> extends On
 
     @Override
     protected void onSuccess(BasePageModel<Bean> beanBasePageModel) {
-        if(beanBasePageModel.getPage()==null){
-            onRequestFailure();
+        if (beanBasePageModel.getPage() == null) {
+            onError(beanBasePageModel.getCode(), beanBasePageModel.getMsg());
             UtilToast.showText(beanBasePageModel.getMsg());
             return;
         }
@@ -75,7 +70,7 @@ public class OnRefreshListResponseListener<Bean extends Serializable> extends On
     }
 
     @Override
-    protected void onRequestFailure() {
+    protected void onError(int code, String msg) {
         recyclerView.setRefreshing(false);
         recyclerView.hideMoreProgress();
     }

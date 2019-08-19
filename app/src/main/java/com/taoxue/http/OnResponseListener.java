@@ -1,12 +1,12 @@
 package com.taoxue.http;
 
-import android.content.Context;
 import android.text.TextUtils;
 
-import com.taoxue.ui.dialog.LoadingDialog;
+import com.taoxue.app.DialogInterface;
 import com.taoxue.ui.model.BaseModel;
 import com.taoxue.utils.LogUtils;
-import com.taoxue.utils.UtilToast;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,20 +17,39 @@ import retrofit2.Response;
  */
 public abstract class OnResponseListener<T> implements Callback<T> {
 
-    LoadingDialog dialog;
+    DialogInterface infa;
 
-    public OnResponseListener(Context context) {
-        dialog = new LoadingDialog(context);
-        if (needDialog())
-            dialog.show();
+    /**
+     * @param infa
+     */
+    public OnResponseListener(DialogInterface infa) {
+        this.infa = infa;
+        show();
     }
 
-    protected boolean needDialog() {
-        return true;
+    /**
+     * dialog隐藏
+     */
+    public void dismiss() {
+        if (infa != null) {
+            infa.dismissDialog();
+        }
     }
+
+    /**
+     * dialog显示
+     */
+    public void show() {
+        if (infa != null) {
+            infa.showDialog();
+        }
+    }
+
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
+
+
         if (response.code() == 200) {
             if (response.body() instanceof BaseModel) {
 
@@ -38,20 +57,23 @@ public abstract class OnResponseListener<T> implements Callback<T> {
                 if (commonBean.getCode() == 1) {
                     onSuccess((T) commonBean);
                 } else {
-                    onFailure(commonBean.getMsg());
+                    onError(commonBean.getCode(), commonBean.getMsg() + " 请联系管理员");
                 }
             } else {
                 onSuccess(response.body());
             }
         } else {
-            onFailure(response.code());
+            String strError = "";
+            try {
+                strError += response.errorBody().string();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            onError(response.code(), strError);
         }
         dismiss();
     }
 
-    protected void onRequestFailure() {
-
-    }
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
@@ -60,29 +82,22 @@ public abstract class OnResponseListener<T> implements Callback<T> {
         String msg = t.getMessage();
         if (TextUtils.isEmpty(msg))
             msg = "请求异常";
-        UtilToast.showText(msg);
-        onRequestFailure();
-    }
-
-    protected void onFailure(int code) {
-        UtilToast.showText("请求异常:" + code);onRequestFailure();
-    }
-
-    protected void onFailure(String msg) {
-        UtilToast.showText(msg);onRequestFailure();
+//        UtilToast.showText(msg);
+        onError(505, msg);
     }
 
 
+    /**
+     * 强制重写
+     *
+     * @param t
+     */
     protected abstract void onSuccess(T t);
 
-    public void dismiss() {
-        try {
-            if (dialog.isShowing()) {
-                dialog.dismiss();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    /**
+     * 选择重写
+     */
+    protected void onError(int code, String msg) {
 
+    }
 }

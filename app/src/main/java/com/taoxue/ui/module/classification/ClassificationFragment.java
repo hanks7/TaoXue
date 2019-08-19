@@ -16,6 +16,7 @@ import com.common.base.basecommon.BaseAdapter.RvCommonAdapter;
 import com.common.base.basecommon.BaseAdapter.listener.InitViewCallBack;
 import com.common.base.basecommon.BaseAdapter.listener.OnItemAdapterClickListener;
 import com.taoxue.R;
+import com.taoxue.app.DialogInterface;
 import com.taoxue.base.BaseFragment;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
@@ -245,7 +246,7 @@ public class ClassificationFragment extends BaseFragment {
 
     @Override
     protected void onInit() {
-        HttpAdapter.getService().queryClassfication().enqueue(new OnResponseListener<BaseItemListModel<ClassfiBean>>(getActivity()) {
+        HttpAdapter.getService().queryClassfication().enqueue(new OnResponseListener<BaseItemListModel<ClassfiBean>>((DialogInterface) getActivity()) {
             @Override
             protected void onSuccess(BaseItemListModel<ClassfiBean> classfiBeanBaseItemListModel) {
                 if (classfiBeanBaseItemListModel.getItem().size()>0){

@@ -21,5 +21,5 @@ public class SearchSupplierBean extends BaseResultModel {
         this.item = item;
     }
 
-   
+
 }

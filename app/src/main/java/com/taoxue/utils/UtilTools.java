@@ -31,6 +31,7 @@ public class UtilTools {
 
     /**
      * 如果没登录直接跳转到登录界面
+     *
      * @param activity
      * @return
      */
@@ -69,14 +70,15 @@ public class UtilTools {
 
     /**
      * 设置textview 的左边的图片
+     *
      * @param tv
      * @param mipmapID
      */
-    public static void setTvDrawable(Context context,TextView tv, int mipmapID) {
-        Drawable drawable= context.getResources().getDrawable(mipmapID);
+    public static void setTvDrawable(Context context, TextView tv, int mipmapID) {
+        Drawable drawable = context.getResources().getDrawable(mipmapID);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         tv.setCompoundDrawablePadding(11);//设置图片和text之间的间距
-        tv.setCompoundDrawables(drawable,null,null,null);
+        tv.setCompoundDrawables(drawable, null, null, null);
     }
 
     /**
@@ -117,13 +119,63 @@ public class UtilTools {
         });
     }
 
+    static int i = 0;
+
     /**
      * 补全图片地址
+     *
      * @param url
      * @return
      */
     @NonNull
     public static String getStringEND(String url) {
+        switch ((i++) % 10) {
+            case 0:
+                url = "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2564176338.jpg";
+                break;
+            case 1:
+                url = "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2564170314.webp";
+                break;
+            case 2:
+                url = "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2562934437.webp";
+                break;
+            case 3:
+                url = "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2564458983.webp";
+                break;
+            case 4:
+                url = "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549177902.jpg";
+                break;
+            case 5:
+                url = "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2564368261.jpg";
+                break;
+            case 6:
+                url = "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2562953341.jpg";
+                break;
+            case 7:
+                url = "https://c-ssl.duitang.com/uploads/item/201406/30/20140630185226_xniwt.jpeg";
+                break;
+            case 8:
+                url = "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2560975437.jpg";
+                break;
+            case 9:
+                url = "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2562677270.jpg";
+                break;
+            case 10:
+                url = "https://img1.doubanio.com/view/photo/l/public/p2564990647.webp";
+                break;
+            case 11:
+                url = "https://img3.doubanio.com/view/photo/l/public/p2564396154.webp";
+                break;
+            case 12:
+                url = "https://img3.doubanio.com/view/photo/l/public/p2564396175.webp";
+                break;
+            case 13:
+                url = "https://img3.doubanio.com/view/photo/l/public/p2564990643.webp";
+                break;
+
+            default:
+                url = "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2541901817.jpg";
+        }
         if (TextUtils.isEmpty(url)) {
             url = "";
         }
@@ -135,20 +187,22 @@ public class UtilTools {
 
     /**
      * 播放音频或者视频的缓存路径.
+     *
      * @param url
      * @return
      */
-    public static  String getProxyUrl(String url) {
+    public static String getProxyUrl(String url) {
         HttpProxyCacheServer proxy = BaseApplication.getProxy();
-        LogUtils.i("url",url);
+        LogUtils.i("url", url);
         return proxy.getProxyUrl(url);
     }
 
     //activity 跳转参数
-    public static String  getActivityKey1(Class clazz){
-        return "key:"+clazz.getSimpleName()+":one";
+    public static String getActivityKey1(Class clazz) {
+        return "key:" + clazz.getSimpleName() + ":one";
     }
-    public static String  getActivityKey2(Class clazz){
-        return "key:"+clazz.getSimpleName()+":two";
+
+    public static String getActivityKey2(Class clazz) {
+        return "key:" + clazz.getSimpleName() + ":two";
     }
 }

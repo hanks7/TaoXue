@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.taoxue.R;
+import com.taoxue.app.DialogInterface;
 import com.taoxue.base.BaseFragment;
 import com.taoxue.http.HttpAdapter;
 import com.taoxue.http.OnResponseListener;
@@ -57,7 +58,7 @@ public class LibHomeFragment extends BaseFragment {
      */
     private void netWork() {
         HttpAdapter.getService().getCgsHomeInfo(ids)
-                .enqueue(new OnResponseListener<BaseResultModel<CgsHomeInfoBean>>(getActivity()) {
+                .enqueue(new OnResponseListener<BaseResultModel<CgsHomeInfoBean>>((DialogInterface) getActivity()) {
                     @Override
                     protected void onSuccess(BaseResultModel<CgsHomeInfoBean> bean) {
 
