@@ -41,7 +41,6 @@ public class BaseActivity extends AppCompatActivity implements DialogInterface {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         PermissionReq.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setOnTranslucent();
