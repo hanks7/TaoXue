@@ -42,8 +42,8 @@ public class TestActivity extends BaseActivity {
         AliPayUtil.Builder builder = new AliPayUtil.Builder(this);
         builder.setPayCallBackListener(new AliPayUtil.Builder.PayCallBackListener() {
             @Override
-            public void onPayCallBack(int status, String resultStatus, String progress) {
-                UtilToast.showText(progress);
+            public void onPayCallBack(int status, String resultStatus, String resultInfo) {
+                UtilToast.showText(resultInfo);
             }
         });
         builder.doPay(str);
